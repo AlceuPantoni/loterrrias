@@ -1,0 +1,21 @@
+Package: loterrrias
+Title: Dados das Loterias Brasileira
+Version: 0.0.0.9000
+Authors@R: 
+    person("Alceu", "Pantoni Neto", , "alceu.pantoni@gmail.com",role = c("aut", "cre"),
+           comment = c(ORCID = ""))
+Description: Disponibiliza dados das loterias do Brasil.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Imports: 
+    dplyr,
+    glue,
+    httr,
+    jsonlite,
+    tidyr,
+    usethis
