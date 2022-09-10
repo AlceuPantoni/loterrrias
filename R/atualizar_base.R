@@ -198,8 +198,14 @@ atualizar_base <- function(df_resultados, produto = 'megasena'){
       }
 
       if(produto == 'timemania'){
-        time <- em_json$nomeTimeCoracaoMesSorte
+        time <- toupper(
+          stringi::stri_trans_general(
+            stringr::str_replace(em_json$nomeTimeCoracaoMesSorte, '[ ]*/', '/'),
+            'Latin-ASCII'
+          )
+        )
         tmp_df <- data.frame(data_apuracao, num_concurso, time, numeros_sorteados)
+        df_final <- rbind(df_final, tmp_df)
 
         rm(tmp_df, data_apuracao, num_concurso, time, numeros_sorteados, em_json)
       }
