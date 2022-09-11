@@ -1,12 +1,13 @@
 #' Atualizar Base de Resultados
 #'
-#' @details
+#' @description
 #' Esta função deve ser utilizada para atualizar a base local de resultados.
 #' O pacote atualiza diariamente a base de resultados, portanto, que faz a
 #' instalação do mesmo, sempre recebe uma base atualizada, porém, após instalá-lo,
 #' é necessário que faça a atualização da base sempre que julgar necessário.
 #'
-#' @param produto Nome do jogo das Loterias que deseja atualizar a base.
+#' @param produto Nome do jogo das Loterias que deseja atualizar a base. Caso não
+#' informado, por padrão será a Megasena [megasena].
 #' Produtos disponíveis:
 #' * Megasena -> digite 'megasena' [megasena]
 #' * Lotofácil -> digite 'lotofacil' [lotofacil]
@@ -29,6 +30,8 @@ atualizar_base_resultados <- function(produto = 'megasena'){
     file = path,
     produto = produto
   )
+
+  return(resultados)
 }
 
 
@@ -103,9 +106,9 @@ ajustar_base <- function(df_resultados, produto = 'megasena'){
 
   if(produto == 'timemania'){
     df_resultados <- df_resultados |>
-      dplyr::select(data_apuracao, num_concurso, time, labels_nums, numeros_sorteados)
+      dplyr::select(data_apuracao, concurso, time, labels_nums, numeros_sorteados)
 
-    tam <- length(df_resultados$num_concurso)
+    tam <- length(df_resultados$concurso)
 
     i <- 1
     for(x in 1:tam){
@@ -118,9 +121,9 @@ ajustar_base <- function(df_resultados, produto = 'megasena'){
   }
   else{
     df_resultados <- df_resultados |>
-      dplyr::select(data_apuracao, num_concurso, labels_nums, numeros_sorteados)
+      dplyr::select(data_apuracao, concurso, labels_nums, numeros_sorteados)
 
-    tam <- length(df_resultados$num_concurso)
+    tam <- length(df_resultados$concurso)
 
     i <- 1
     for(x in 1:tam){
@@ -138,6 +141,18 @@ ajustar_base <- function(df_resultados, produto = 'megasena'){
       values_from = "numeros_sorteados"
     )
 
+  coluna_final <- ncol(df_resultados)
+  coluna_inicial <- ncol(df_resultados |>
+                           dplyr::select(!dplyr::starts_with("num_"))) + 1
+
+  df_resultados <- df_resultados |>
+    tidyr::unite(
+      "numeros_sorteados",
+      coluna_inicial:coluna_final,
+      remove = F,
+      sep = ";"
+    )
+
   return(df_resultados)
 }
 
@@ -145,9 +160,9 @@ ajustar_base <- function(df_resultados, produto = 'megasena'){
 atualizar_base <- function(df_resultados, produto = 'megasena'){
 
   if(is.null(df_resultados)){
-    concurso <- 1
+    num_concurso <- 1
   } else{
-    concurso <- max(df_resultados$num_concurso) + 1
+    num_concurso <- max(df_resultados$concurso) + 1
   }
 
   url_base <- glue::glue(
@@ -159,7 +174,7 @@ atualizar_base <- function(df_resultados, produto = 'megasena'){
   if(produto == 'timemania'){
     df_final <- data.frame(
       data_apuracao = character(),
-      num_concurso = numeric(),
+      concurso = numeric(),
       time = character(),
       numeros_sorteados = numeric(),
       stringsAsFactors = FALSE
@@ -168,7 +183,7 @@ atualizar_base <- function(df_resultados, produto = 'megasena'){
   else{
     df_final <- data.frame(
       data_apuracao = character(),
-      num_concurso = numeric(),
+      concurso = numeric(),
       numeros_sorteados = numeric(),
       stringsAsFactors = FALSE
     )
@@ -177,7 +192,7 @@ atualizar_base <- function(df_resultados, produto = 'megasena'){
   while(resultado_ok){
     resultado_ok = FALSE
 
-    url = paste0(url_base,concurso)
+    url = paste0(url_base,num_concurso)
 
     resposta <- httr::GET(url = url, config = httr::config(ssl_verifypeer = F))
 
@@ -188,7 +203,7 @@ atualizar_base <- function(df_resultados, produto = 'megasena'){
       )
 
       data_apuracao <- em_json$dataApuracao
-      num_concurso <- as.numeric(em_json$numero)
+      concurso <- as.numeric(em_json$numero)
 
       if(produto == 'supersete'){
         numeros_sorteados <- as.numeric(em_json$dezenasSorteadasOrdemSorteio)
@@ -204,27 +219,27 @@ atualizar_base <- function(df_resultados, produto = 'megasena'){
             'Latin-ASCII'
           )
         )
-        tmp_df <- data.frame(data_apuracao, num_concurso, time, numeros_sorteados)
+        tmp_df <- data.frame(data_apuracao, concurso, time, numeros_sorteados)
         df_final <- rbind(df_final, tmp_df)
 
-        rm(tmp_df, data_apuracao, num_concurso, time, numeros_sorteados, em_json)
+        rm(tmp_df, data_apuracao, concurso, time, numeros_sorteados, em_json)
       }
       else{
-        tmp_df <- data.frame(data_apuracao, num_concurso, numeros_sorteados)
+        tmp_df <- data.frame(data_apuracao, concurso, numeros_sorteados)
         df_final <- rbind(df_final, tmp_df)
 
-        rm(tmp_df, data_apuracao, num_concurso, numeros_sorteados, em_json)
+        rm(tmp_df, data_apuracao, concurso, numeros_sorteados, em_json)
       }
 
       usethis::ui_info(glue::glue(
-        'Produto: {produto} | Recebido concurso: {concurso}.'
+        'Produto: {produto} | Recebido concurso: {num_concurso}.'
       )
       )
     }
-    concurso <- concurso + 1
+    num_concurso <- num_concurso + 1
   }
 
-  rm(concurso, url_base, url, resultado_ok, resposta)
+  rm(num_concurso, url_base, url, resultado_ok, resposta)
 
   return(df_final)
 }

@@ -7,7 +7,8 @@
 resultados_todos(produto = "megasena")
 }
 \arguments{
-\item{produto}{Nome do jogo das Loterias que deseja atualizar a base.
+\item{produto}{Nome do jogo das Loterias que deseja atualizar a base. Caso não
+informado, por padrão será a Megasena \link{megasena}.
 Produtos disponíveis:
 \itemize{
 \item Megasena -> digite 'megasena' \link{megasena}
@@ -23,17 +24,18 @@ Produtos disponíveis:
 Uma \code{tibble} - a quantidade de variáveis depende do produto.
 }
 \description{
-Todos os Resultados
-}
-\details{
 Utilize esta função para receber um conjunto de dados contendo todos os
 resultados do produto escolhido.
+}
+\details{
 \strong{Importante}: o pacote atualiza as bases diariamente, porém, após instalá-lo
 é importante que faça a atualização manual quando desejar os resultados mais
 recentes. Utilize a função \link{atualizar_base_resultados} para este fim.
 }
 \examples{
-# Receber os resultados de todos os concursos da Megasena
+# Visualizar a data, concurso e números sorteados referente aos resultados
+# de todos os concursos da Megasena
 # No caso da Megasena, o resultado será uma tibble com 8 variáveis
-resultados_todos(produto = 'megasena')
+resultados_todos(produto = 'megasena') |>
+   dplyr::select(data_apuracao, concurso, numeros_sorteados)
 }

@@ -8,7 +8,9 @@
 Uma tibble contendo 10 variávies.
 \itemize{
 \item \strong{data_apuracao} Data do sorteio (character)
-\item \strong{num_concurso} Numero do concurso (numeric)
+\item \strong{concurso} Numero do concurso (numeric)
+\item \strong{numeros_sorteados} Todos os números sorteados, separados por ponto
+e vírgula (character)
 \item \strong{time} Time do coração (character)
 \item \strong{num_1} Primeira dezena do sorteio (numeric)
 \item \strong{num_2} Segunda dezena do sorteio (numeric)

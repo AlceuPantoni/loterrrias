@@ -3,12 +3,14 @@
 \docType{data}
 \name{lotofacil}
 \alias{lotofacil}
-\title{Lotofácil.}
+\title{Lotofácil}
 \format{
 Uma tibble contendo 17 variáveis.
 \itemize{
 \item \strong{data_apuracao} Data do sorteio (character)
-\item \strong{num_concurso} Número do concurso (numeric)
+\item \strong{concurso} Número do concurso (numeric)
+\item \strong{numeros_sorteados} Todos os números sorteados, separados por ponto
+e vírgula (character)
 \item \strong{num_1} Primeira dezena do sorteio (numeric)
 \item \strong{num_2} Segunda dezena do sorteio (numeric)
 \item \strong{num_3} Terceira dezena do sorteio (numeric)

@@ -1,4 +1,4 @@
-#' Megasena.
+#' Megasena
 #'
 #' @description
 #' Conjunto de dados contendo todos os resultados do produto das Loterias
@@ -6,7 +6,9 @@
 #'
 #' @format Uma tibble contendo 8 variávies.
 #' * __data_apuracao__ Data do sorteio (character)
-#' * __num_concurso__ Numero do concurso (numeric)
+#' * __concurso__ Numero do concurso (numeric)
+#' * __numeros_sorteados__ Todos os números sorteados, separados por ponto
+#' e vírgula (character)
 #' * __num_1__ Primeira dezena do sorteio (numeric)
 #' * __num_2__ Segunda dezena do sorteio (numeric)
 #' * __num_3__ Terceira dezena do sorteio (numeric)
@@ -20,7 +22,7 @@
 #' @source Site da Loteria Federal \url{https://loterias.caixa.gov.br/Paginas/Mega-Sena.aspx}
 "megasena"
 
-#' Lotofácil.
+#' Lotofácil
 #'
 #' @description
 #' Conjunto de dados contendo todos os resultados do produto das Loterias
@@ -28,7 +30,9 @@
 #'
 #' @format Uma tibble contendo 17 variáveis.
 #' * __data_apuracao__ Data do sorteio (character)
-#' * __num_concurso__ Número do concurso (numeric)
+#' * __concurso__ Número do concurso (numeric)
+#' * __numeros_sorteados__ Todos os números sorteados, separados por ponto
+#' e vírgula (character)
 #' * __num_1__ Primeira dezena do sorteio (numeric)
 #' * __num_2__ Segunda dezena do sorteio (numeric)
 #' * __num_3__ Terceira dezena do sorteio (numeric)
@@ -51,7 +55,7 @@
 #' @source Site da Loteria Federal \url{https://loterias.caixa.gov.br/Paginas/Lotofacil.aspx}
 "lotofacil"
 
-#' Lotomania.
+#' Lotomania
 #'
 #' @description
 #' Conjunto de dados contendo todos os resultados do produto das Loterias
@@ -59,7 +63,9 @@
 #'
 #' @format Uma tibble contendo 22 variaveis.
 #' * __data_apuracao__ Data do sorteio (character)
-#' * __num_concurso__ Numero do concurso (numeric)
+#' * __concurso__ Numero do concurso (numeric)
+#' * __numeros_sorteados__ Todos os números sorteados, separados por ponto
+#' e vírgula (character)
 #' * __num_1__ Primeira dezena do sorteio (numeric)
 #' * __num_2__ Segunda dezena do sorteio (numeric)
 #' * __num_3__ Terceira dezena do sorteio (numeric)
@@ -96,7 +102,9 @@
 #'
 #' @format Uma tibble contendo 8 variávies.
 #' * __data_apuracao__ Data do sorteio (character)
-#' * __num_concurso__ Numero do concurso (numeric)
+#' * __concurso__ Numero do concurso (numeric)
+#' * __numeros_sorteados__ Todos os números sorteados, separados por ponto
+#' e vírgula (character)
 #' * __num_1__ Primeira dezena do sorteio (numeric)
 #' * __num_2__ Segunda dezena do sorteio (numeric)
 #' * __num_3__ Terceira dezena do sorteio (numeric)
@@ -117,7 +125,9 @@
 #'
 #' @format Uma tibble contendo 10 variávies.
 #' * __data_apuracao__ Data do sorteio (character)
-#' * __num_concurso__ Numero do concurso (numeric)
+#' * __concurso__ Numero do concurso (numeric)
+#' * __numeros_sorteados__ Todos os números sorteados, separados por ponto
+#' e vírgula (character)
 #' * __time__ Time do coração (character)
 #' * __num_1__ Primeira dezena do sorteio (numeric)
 #' * __num_2__ Segunda dezena do sorteio (numeric)
@@ -141,7 +151,9 @@
 #'
 #' @format Uma tibble contendo 9 variávies.
 #' * __data_apuracao__ Data do sorteio (character)
-#' * __num_concurso__ Numero do concurso (numeric)
+#' * __concurso__ Numero do concurso (numeric)
+#' * __numeros_sorteados__ Todos os números sorteados, separados por ponto
+#' e vírgula (character)
 #' * __num_1__ Primeira dezena do sorteio (numeric)
 #' * __num_2__ Segunda dezena do sorteio (numeric)
 #' * __num_3__ Terceira dezena do sorteio (numeric)
@@ -164,7 +176,9 @@
 #'
 #' @format Uma tibble contendo 9 variávies.
 #' * __data_apuracao__ Data do sorteio (character)
-#' * __num_concurso__ Numero do concurso (numeric)
+#' * __concurso__ Numero do concurso (numeric)
+#' * __numeros_sorteados__ Todos os números sorteados, separados por ponto
+#' e vírgula (character)
 #' * __num_1__ Dezena da primeira coluna (numeric)
 #' * __num_2__ Dezena da segunda coluna (numeric)
 #' * __num_3__ Dezena da terceira coluna (numeric)

@@ -3,12 +3,14 @@
 \docType{data}
 \name{megasena}
 \alias{megasena}
-\title{Megasena.}
+\title{Megasena}
 \format{
 Uma tibble contendo 8 variávies.
 \itemize{
 \item \strong{data_apuracao} Data do sorteio (character)
-\item \strong{num_concurso} Numero do concurso (numeric)
+\item \strong{concurso} Numero do concurso (numeric)
+\item \strong{numeros_sorteados} Todos os números sorteados, separados por ponto
+e vírgula (character)
 \item \strong{num_1} Primeira dezena do sorteio (numeric)
 \item \strong{num_2} Segunda dezena do sorteio (numeric)
 \item \strong{num_3} Terceira dezena do sorteio (numeric)
