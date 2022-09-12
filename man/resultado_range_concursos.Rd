@@ -44,12 +44,11 @@ de um range de concursos, especificando o inicial e o final.
 recentes. Utilize a função \link{atualizar_base_resultados} para este fim.
 }
 \examples{
-# Visualizar a data, concurso e números sorteados referentes aos resultados
-# dos concursos entre 1000 a 1500 da Megasena
-# No caso da Megasena, o resultado será uma tibble com 8 variáveis
+# Visualizar concurso, números sorteados e se houve ganhador referentes aos
+# resultados dos concursos entre 1000 a 1500 da Megasena
 resultado_range_concursos(
    produto = 'megasena',
    num_concurso_inicial = 1000,
    num_concurso_final = 1500
- ) |> dplyr::select(data_apuracao, concurso, numeros_sorteados)
+ ) |> dplyr::select(concurso, numeros_sorteados, houve_ganhador)
 }

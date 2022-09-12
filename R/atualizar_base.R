@@ -106,32 +106,25 @@ ajustar_base <- function(df_resultados, produto = 'megasena'){
 
   if(produto == 'timemania'){
     df_resultados <- df_resultados |>
-      dplyr::select(data_apuracao, concurso, time, labels_nums, numeros_sorteados)
-
-    tam <- length(df_resultados$concurso)
-
-    i <- 1
-    for(x in 1:tam){
-      df_resultados[x,4] <- paste0('num_',i)
-      i <- i+1
-      if(i>qtde_numeros){
-        i <- 1
-      }
-    }
+      dplyr::select(data_apuracao, concurso, houve_ganhador, valor_premio_maximo,
+                    time, labels_nums, numeros_sorteados)
+    coluna_labels <- 6
   }
   else{
     df_resultados <- df_resultados |>
-      dplyr::select(data_apuracao, concurso, labels_nums, numeros_sorteados)
+      dplyr::select(data_apuracao, concurso, houve_ganhador, valor_premio_maximo,
+                    labels_nums, numeros_sorteados)
+    coluna_labels <- 5
+  }
 
-    tam <- length(df_resultados$concurso)
+  tam <- length(df_resultados$concurso)
 
-    i <- 1
-    for(x in 1:tam){
-      df_resultados[x,3] <- paste0('num_',i)
-      i <- i+1
-      if(i>qtde_numeros){
-        i <- 1
-      }
+  i <- 1
+  for(x in 1:tam){
+    df_resultados[x,coluna_labels] <- paste0('num_',i)
+    i <- i+1
+    if(i>qtde_numeros){
+      i <- 1
     }
   }
 
@@ -175,6 +168,8 @@ atualizar_base <- function(df_resultados, produto = 'megasena'){
     df_final <- data.frame(
       data_apuracao = character(),
       concurso = numeric(),
+      houve_ganhador = numeric(),
+      valor_premio_maximo = numeric(),
       time = character(),
       numeros_sorteados = numeric(),
       stringsAsFactors = FALSE
@@ -184,6 +179,8 @@ atualizar_base <- function(df_resultados, produto = 'megasena'){
     df_final <- data.frame(
       data_apuracao = character(),
       concurso = numeric(),
+      houve_ganhador = numeric(),
+      valor_premio_maximo = numeric(),
       numeros_sorteados = numeric(),
       stringsAsFactors = FALSE
     )
@@ -202,8 +199,20 @@ atualizar_base <- function(df_resultados, produto = 'megasena'){
         httr::content(resposta, "text", encoding = "UTF-8")
       )
 
-      data_apuracao <- em_json$dataApuracao
+      partes_data <- stringr::str_split(em_json$dataApuracao, "/")[[1]]
+      data_apuracao <- lubridate::make_date(
+        year = partes_data[3],
+        month = partes_data[2],
+        day = partes_data[1]
+      )
+      data_apuracao <- lubridate::as_date(data_apuracao)
+      rm(partes_data)
       concurso <- as.numeric(em_json$numero)
+      houve_ganhador <- ifelse(!em_json$acumulado,1,0)
+      valor_premio_maximo <- em_json$listaRateioPremio |>
+        dplyr::filter(faixa == 1) |>
+        dplyr::select(valorPremio) |> as.numeric()
+
 
       if(produto == 'supersete'){
         numeros_sorteados <- as.numeric(em_json$dezenasSorteadasOrdemSorteio)
@@ -219,16 +228,20 @@ atualizar_base <- function(df_resultados, produto = 'megasena'){
             'Latin-ASCII'
           )
         )
-        tmp_df <- data.frame(data_apuracao, concurso, time, numeros_sorteados)
+        tmp_df <- data.frame(data_apuracao, concurso, houve_ganhador,
+                             valor_premio_maximo, time, numeros_sorteados)
         df_final <- rbind(df_final, tmp_df)
 
-        rm(tmp_df, data_apuracao, concurso, time, numeros_sorteados, em_json)
+        rm(tmp_df, data_apuracao, concurso, houve_ganhador,
+           valor_premio_maximo, time, numeros_sorteados, em_json)
       }
       else{
-        tmp_df <- data.frame(data_apuracao, concurso, numeros_sorteados)
+        tmp_df <- data.frame(data_apuracao, concurso, houve_ganhador,
+                             valor_premio_maximo, numeros_sorteados)
         df_final <- rbind(df_final, tmp_df)
 
-        rm(tmp_df, data_apuracao, concurso, numeros_sorteados, em_json)
+        rm(tmp_df, data_apuracao, concurso, houve_ganhador,
+           valor_premio_maximo, numeros_sorteados, em_json)
       }
 
       usethis::ui_info(glue::glue(

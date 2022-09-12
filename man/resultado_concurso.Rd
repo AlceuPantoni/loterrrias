@@ -35,9 +35,8 @@ de um concurso específico.
 recentes. Utilize a função \link{atualizar_base_resultados} para este fim.
 }
 \examples{
-# Visualizar a data, concurso e números sorteados referente ao resultado do
-# concurso 1000 da Megasena
-# No caso da Megasena, o resultado será uma tibble com 8 variáveis
+# Visualizar concurso, números sorteados e se houve ganhador referente ao
+# resultado do concurso 1000 da Megasena
 resultado_concurso(produto = 'megasena', num_concurso = 1000) |>
-   dplyr::select(data_apuracao, concurso, numeros_sorteados)
+   dplyr::select(concurso, numeros_sorteados, houve_ganhador)
 }

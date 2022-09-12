@@ -24,11 +24,10 @@
 #' @export
 #'
 #' @examples
-#' # Visualizar a data, concurso e números sorteados referente aos resultados
-#' # de todos os concursos da Megasena
-#' # No caso da Megasena, o resultado será uma tibble com 8 variáveis
+#' # Visualizar concurso, números sorteados e se houve ganhador referente aos
+#' # resultados de todos os concursos da Megasena
 #' resultados_todos(produto = 'megasena') |>
-#'    dplyr::select(data_apuracao, concurso, numeros_sorteados)
+#'    dplyr::select(concurso, numeros_sorteados, houve_ganhador)
 resultados_todos <- function(produto = 'megasena'){
 
   resultados <- base_produto_escolhido(produto)
@@ -63,11 +62,10 @@ resultados_todos <- function(produto = 'megasena'){
 #' @export
 #'
 #' @examples
-#' # Visualizar a data, concurso e números sorteados referente ao resultado do
-#' # concurso 1000 da Megasena
-#' # No caso da Megasena, o resultado será uma tibble com 8 variáveis
+#' # Visualizar concurso, números sorteados e se houve ganhador referente ao
+#' # resultado do concurso 1000 da Megasena
 #' resultado_concurso(produto = 'megasena', num_concurso = 1000) |>
-#'    dplyr::select(data_apuracao, concurso, numeros_sorteados)
+#'    dplyr::select(concurso, numeros_sorteados, houve_ganhador)
 resultado_concurso <- function(produto = 'megasena', num_concurso){
   if(is.null(num_concurso)){
     usethis::ui_stop('Nao foi informado um concurso.
@@ -121,14 +119,13 @@ resultado_concurso <- function(produto = 'megasena', num_concurso){
 #' @export
 #'
 #' @examples
-#' # Visualizar a data, concurso e números sorteados referentes aos resultados
-#' # dos concursos entre 1000 a 1500 da Megasena
-#' # No caso da Megasena, o resultado será uma tibble com 8 variáveis
+#' # Visualizar concurso, números sorteados e se houve ganhador referentes aos
+#' # resultados dos concursos entre 1000 a 1500 da Megasena
 #' resultado_range_concursos(
 #'    produto = 'megasena',
 #'    num_concurso_inicial = 1000,
 #'    num_concurso_final = 1500
-#'  ) |> dplyr::select(data_apuracao, concurso, numeros_sorteados)
+#'  ) |> dplyr::select(concurso, numeros_sorteados, houve_ganhador)
 resultado_range_concursos <- function(produto = 'megasena', num_concurso_inicial, num_concurso_final){
   if(is.null(num_concurso_inicial)){
     usethis::ui_stop('Nao foi informado o concurso inicial.
@@ -179,11 +176,10 @@ resultado_range_concursos <- function(produto = 'megasena', num_concurso_inicial
 #' @export
 #'
 #' @examples
-#' # Visualizar a data, concurso e números sorteados referente ao resultado do
-#' # concurso mais recente da Megasena
-#' # No caso da Megasena, o resultado será uma tibble com 8 variáveis
+#' # Visualizar concurso, números sorteados e se houve ganhador referente ao
+#' # resultado do concurso mais recente da Megasena
 #' resultados_ultimo_concurso(produto = 'megasena') |>
-#'    dplyr::select(data_apuracao, concurso, numeros_sorteados)
+#'    dplyr::select(concurso, numeros_sorteados, houve_ganhador)
 resultados_ultimo_concurso <- function(produto = 'megasena'){
 
   resultados <- atualizar_base_resultados(produto = produto)

@@ -5,8 +5,12 @@
 #' chamado Megasena.
 #'
 #' @format Uma tibble contendo 8 variávies.
-#' * __data_apuracao__ Data do sorteio (character)
+#' * __data_apuracao__ Data do sorteio (date)
 #' * __concurso__ Numero do concurso (numeric)
+#' * __houve_ganhador__ Flag indicando se houve ganhador do prêmio máximo no
+#' concurso  <0 ou 1> (numeric)
+#' * __valor_premio_maximo__ Valor total do prêmio máximo do concurso, caso
+#' exista ganhador (numeric)
 #' * __numeros_sorteados__ Todos os números sorteados, separados por ponto
 #' e vírgula (character)
 #' * __num_1__ Primeira dezena do sorteio (numeric)
@@ -29,8 +33,12 @@
 #' chamado Lotofácil.
 #'
 #' @format Uma tibble contendo 17 variáveis.
-#' * __data_apuracao__ Data do sorteio (character)
+#' * __data_apuracao__ Data do sorteio (date)
 #' * __concurso__ Número do concurso (numeric)
+#' * __houve_ganhador__ Flag indicando se houve ganhador do prêmio máximo no
+#' concurso  <0 ou 1> (numeric)
+#' * __valor_premio_maximo__ Valor total do prêmio máximo do concurso, caso
+#' exista ganhador (numeric)
 #' * __numeros_sorteados__ Todos os números sorteados, separados por ponto
 #' e vírgula (character)
 #' * __num_1__ Primeira dezena do sorteio (numeric)
@@ -62,8 +70,12 @@
 #' chamado Lotomania.
 #'
 #' @format Uma tibble contendo 22 variaveis.
-#' * __data_apuracao__ Data do sorteio (character)
+#' * __data_apuracao__ Data do sorteio (date)
 #' * __concurso__ Numero do concurso (numeric)
+#' * __houve_ganhador__ Flag indicando se houve ganhador do prêmio máximo no
+#' concurso  <0 ou 1> (numeric)
+#' * __valor_premio_maximo__ Valor total do prêmio máximo do concurso, caso
+#' exista ganhador (numeric)
 #' * __numeros_sorteados__ Todos os números sorteados, separados por ponto
 #' e vírgula (character)
 #' * __num_1__ Primeira dezena do sorteio (numeric)
@@ -101,8 +113,12 @@
 #' chamado Quina.
 #'
 #' @format Uma tibble contendo 8 variávies.
-#' * __data_apuracao__ Data do sorteio (character)
+#' * __data_apuracao__ Data do sorteio (date)
 #' * __concurso__ Numero do concurso (numeric)
+#' * __houve_ganhador__ Flag indicando se houve ganhador do prêmio máximo no
+#' concurso  <0 ou 1> (numeric)
+#' * __valor_premio_maximo__ Valor total do prêmio máximo do concurso, caso
+#' exista ganhador (numeric)
 #' * __numeros_sorteados__ Todos os números sorteados, separados por ponto
 #' e vírgula (character)
 #' * __num_1__ Primeira dezena do sorteio (numeric)
@@ -124,8 +140,12 @@
 #' chamado Timemania.
 #'
 #' @format Uma tibble contendo 10 variávies.
-#' * __data_apuracao__ Data do sorteio (character)
+#' * __data_apuracao__ Data do sorteio (date)
 #' * __concurso__ Numero do concurso (numeric)
+#' * __houve_ganhador__ Flag indicando se houve ganhador do prêmio máximo no
+#' concurso  <0 ou 1> (numeric)
+#' * __valor_premio_maximo__ Valor total do prêmio máximo do concurso, caso
+#' exista ganhador (numeric)
 #' * __numeros_sorteados__ Todos os números sorteados, separados por ponto
 #' e vírgula (character)
 #' * __time__ Time do coração (character)
@@ -150,8 +170,12 @@
 #' chamado Dia de Sorte.
 #'
 #' @format Uma tibble contendo 9 variávies.
-#' * __data_apuracao__ Data do sorteio (character)
+#' * __data_apuracao__ Data do sorteio (date)
 #' * __concurso__ Numero do concurso (numeric)
+#' * __houve_ganhador__ Flag indicando se houve ganhador do prêmio máximo no
+#' concurso  <0 ou 1> (numeric)
+#' * __valor_premio_maximo__ Valor total do prêmio máximo do concurso, caso
+#' exista ganhador (numeric)
 #' * __numeros_sorteados__ Todos os números sorteados, separados por ponto
 #' e vírgula (character)
 #' * __num_1__ Primeira dezena do sorteio (numeric)
@@ -175,8 +199,12 @@
 #' chamado Super Sete.
 #'
 #' @format Uma tibble contendo 9 variávies.
-#' * __data_apuracao__ Data do sorteio (character)
+#' * __data_apuracao__ Data do sorteio (date)
 #' * __concurso__ Numero do concurso (numeric)
+#' * __houve_ganhador__ Flag indicando se houve ganhador do prêmio máximo no
+#' concurso  <0 ou 1> (numeric)
+#' * __valor_premio_maximo__ Valor total do prêmio máximo do concurso, caso
+#' exista ganhador (numeric)
 #' * __numeros_sorteados__ Todos os números sorteados, separados por ponto
 #' e vírgula (character)
 #' * __num_1__ Dezena da primeira coluna (numeric)

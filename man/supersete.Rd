@@ -7,8 +7,12 @@
 \format{
 Uma tibble contendo 9 variávies.
 \itemize{
-\item \strong{data_apuracao} Data do sorteio (character)
+\item \strong{data_apuracao} Data do sorteio (date)
 \item \strong{concurso} Numero do concurso (numeric)
+\item \strong{houve_ganhador} Flag indicando se houve ganhador do prêmio máximo no
+concurso  <0 ou 1> (numeric)
+\item \strong{valor_premio_maximo} Valor total do prêmio máximo do concurso, caso
+exista ganhador (numeric)
 \item \strong{numeros_sorteados} Todos os números sorteados, separados por ponto
 e vírgula (character)
 \item \strong{num_1} Dezena da primeira coluna (numeric)

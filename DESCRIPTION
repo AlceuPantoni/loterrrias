@@ -17,6 +17,7 @@ Imports:
     glue,
     httr,
     jsonlite,
+    lubridate,
     stringi,
     stringr,
     tidyr,

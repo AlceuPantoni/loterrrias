@@ -35,9 +35,8 @@ No caso desta função, essa rotina citada de atualização de base é acionada
 automaticamente para o produto especificado.
 }
 \examples{
-# Visualizar a data, concurso e números sorteados referente ao resultado do
-# concurso mais recente da Megasena
-# No caso da Megasena, o resultado será uma tibble com 8 variáveis
+# Visualizar concurso, números sorteados e se houve ganhador referente ao
+# resultado do concurso mais recente da Megasena
 resultados_ultimo_concurso(produto = 'megasena') |>
-   dplyr::select(data_apuracao, concurso, numeros_sorteados)
+   dplyr::select(concurso, numeros_sorteados, houve_ganhador)
 }
