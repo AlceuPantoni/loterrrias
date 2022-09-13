@@ -4,11 +4,11 @@
 \alias{atualizar_base_resultados}
 \title{Atualizar Base de Resultados}
 \usage{
-atualizar_base_resultados(produto = "megasena")
+atualizar_base_resultados(produto)
 }
 \arguments{
 \item{produto}{Nome do jogo das Loterias que deseja atualizar a base. Caso não
-informado, por padrão será a Megasena \link{megasena}.
+informado, as bases de todos os produtos serão atualizadas.
 Produtos disponíveis:
 \itemize{
 \item Megasena -> digite 'megasena' \link{megasena}
@@ -25,7 +25,7 @@ Uma \code{tibble} - a quantidade de variáveis depende do produto.
 }
 \description{
 Esta função deve ser utilizada para atualizar a base local de resultados.
-O pacote atualiza diariamente a base de resultados, portanto, que faz a
+O pacote atualiza diariamente a base de resultados, portanto, quem faz a
 instalação do mesmo, sempre recebe uma base atualizada, porém, após instalá-lo,
 é necessário que faça a atualização da base sempre que julgar necessário.
 }

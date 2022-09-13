@@ -20,5 +20,6 @@ Imports:
     lubridate,
     stringi,
     stringr,
+    tibble,
     tidyr,
     usethis

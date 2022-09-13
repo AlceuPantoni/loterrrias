@@ -2,12 +2,12 @@
 #'
 #' @description
 #' Esta função deve ser utilizada para atualizar a base local de resultados.
-#' O pacote atualiza diariamente a base de resultados, portanto, que faz a
+#' O pacote atualiza diariamente a base de resultados, portanto, quem faz a
 #' instalação do mesmo, sempre recebe uma base atualizada, porém, após instalá-lo,
 #' é necessário que faça a atualização da base sempre que julgar necessário.
 #'
 #' @param produto Nome do jogo das Loterias que deseja atualizar a base. Caso não
-#' informado, por padrão será a Megasena [megasena].
+#' informado, as bases de todos os produtos serão atualizadas.
 #' Produtos disponíveis:
 #' * Megasena -> digite 'megasena' [megasena]
 #' * Lotofácil -> digite 'lotofacil' [lotofacil]
@@ -19,19 +19,36 @@
 #'
 #' @return Uma \code{tibble} - a quantidade de variáveis depende do produto.
 #' @export
-atualizar_base_resultados <- function(produto = 'megasena'){
+atualizar_base_resultados <- function(produto){
 
-  resultados <- base_produto_escolhido(produto)
+  parametro_ok <- !(missing(produto) || is.null(produto))
 
-  path <- glue::glue('data/{produto}.rda')
+  if(parametro_ok){
+    produtos <- c(produto)
+  }
+  else{
+    produtos <- c("megasena", "lotofacil", "quina", "lotomania", "timemania", "supersete", "diadesorte")
+  }
 
-  gravar_dataset(
-    df = resultados,
-    file = path,
-    produto = produto
-  )
+  for(prod in produtos){
+    resultados <- base_produto_escolhido(produto = prod)
 
-  return(resultados)
+    path <- glue::glue('data/{prod}.rda')
+
+    gravar_dataset(
+      df = resultados,
+      file = path,
+      produto = prod
+    )
+  }
+
+  if(parametro_ok){
+    base_produto_escolhido(produto = produto)
+  }
+  else{
+    invisible(NULL)
+  }
+
 }
 
 
@@ -78,14 +95,16 @@ gravar_dataset <- function(df, file, produto){
     df <- rbind(df, temp)
 
     save(df, file = file, compress = T)
-
-    return(df)
   }
   else{
     usethis::ui_info(
-      'O dataset esta atualizado.'
+      glue::glue(
+        'Produto: {produto} | Base de resultados nao necessita atualizacao.'
+      )
     )
   }
+
+  return(df)
 }
 
 # Ajusta a base para o formato Wide
@@ -150,7 +169,7 @@ ajustar_base <- function(df_resultados, produto = 'megasena'){
 }
 
 # Atualiza os resultados (formato Long)
-atualizar_base <- function(df_resultados, produto = 'megasena'){
+atualizar_base <- function(df_resultados, produto = 'megasena', verbose = FALSE){
 
   if(is.null(df_resultados)){
     num_concurso <- 1
@@ -244,10 +263,21 @@ atualizar_base <- function(df_resultados, produto = 'megasena'){
            valor_premio_maximo, numeros_sorteados, em_json)
       }
 
-      usethis::ui_info(glue::glue(
-        'Produto: {produto} | Recebido concurso: {num_concurso}.'
-      )
-      )
+      if(verbose){
+        usethis::ui_info(
+          glue::glue(
+            'Produto: {produto} | Recebido concurso: {num_concurso}.'
+          )
+        )
+      } else{
+        usethis::ui_info(
+          glue::glue(
+            'Produto: {produto} | Atualizando base de resultados.'
+          )
+        )
+      }
+
+
     }
     num_concurso <- num_concurso + 1
   }

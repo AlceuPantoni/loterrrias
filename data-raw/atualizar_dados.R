@@ -11,7 +11,8 @@ raw_atualizar_dados <- function(produto){
 
   temp <- loterrrias:::atualizar_base(
     df_resultados = df,
-    produto = produto
+    produto = produto,
+    verbose = TRUE
   )
 
   df <- rbind(df, temp)
