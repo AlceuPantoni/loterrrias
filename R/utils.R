@@ -1,125 +1,103 @@
-#' Atualizar Base de Resultados
-#'
-#' @description
-#' Esta função deve ser utilizada para atualizar a base local de resultados.
-#' O pacote atualiza diariamente a base de resultados, portanto, quem faz a
-#' instalação do mesmo, sempre recebe uma base atualizada, porém, após instalá-lo,
-#' é necessário que faça a atualização da base sempre que julgar necessário.
-#'
-#' @param produto Nome do jogo das Loterias que deseja atualizar a base. Caso não
-#' informado, as bases de todos os produtos serão atualizadas.
-#' Produtos disponíveis:
-#' * Megasena -> digite 'megasena' [megasena]
-#' * Lotofácil -> digite 'lotofacil' [lotofacil]
-#' * Quina -> digite 'quina' [quina]
-#' * Lotomania -> digite 'lotomania' [lotomania]
-#' * Timemania -> digite 'timemania' [timemania]
-#' * Super Sete -> digite 'supersete' [supersete]
-#' * Dia de Sorte -> digite 'diadesorte' [diadesorte]
-#'
-#' @return Uma \code{tibble} - a quantidade de variáveis depende do produto.
-#' @export
-atualizar_base_resultados <- function(produto){
+# Funções auxiliares úteis para demais funções do pacote ------------------
 
-  parametro_ok <- !(missing(produto) || is.null(produto))
+# Validar a string recebido como produto
+validar_produto <- function(produto){
 
-  if(parametro_ok){
-    produtos <- c(produto)
-  }
-  else{
-    produtos <- c("megasena", "lotofacil", "quina", "lotomania", "timemania", "supersete", "diadesorte")
-  }
-
-  for(prod in produtos){
-    resultados <- base_produto_escolhido(produto = prod)
-
-    path <- glue::glue('data/{prod}.rda')
-
-    gravar_dataset(
-      df = resultados,
-      file = path,
-      produto = prod
+  if(missing(produto) || is.null(produto)){
+    usethis::ui_info(
+      usethis::ui_stop('Produto nao informado ou nulo.
+                     Verifique se digitou corretamente.
+                     A funcao produtos_existentes() exibe os valores possiveis.')
     )
   }
 
-  if(parametro_ok){
-    base_produto_escolhido(produto = produto)
-  }
-  else{
-    invisible(NULL)
+  prod <- ajustar_texto(produto)
+
+  produtos <- produtos_existentes()
+  produtos <- produtos$parametro_produto
+
+  if(!prod %in% produtos){
+    usethis::ui_info(
+      usethis::ui_stop('O produto informado nao existe.
+                     Verifique se digitou corretamente.
+                     A funcao produtos_existentes() exibe os valores possiveis.')
+    )
   }
 
+  return(prod)
 }
 
+# Validar o número de concurso recebido nas funções
+validar_concurso <- function(numero_concurso){
+  if(missing(numero_concurso) || is.null(numero_concurso)){
+    usethis::ui_stop('Concurso nao informado ou nulo.
+                     Para esta funcao, informe um concurso.')
+  }
 
-# Funcoes auxiliares ------------------------------------------------------
+  if(!is.numeric(num_concurso)){
+    usethis::ui_stop('Valor de concurso invalido.
+                     Concurso deve ser um valor numerico.')
+  }
 
+  return(TRUE)
+}
+
+# Validar parâmetros numericos
+validar_param_num <- function(param_num){
+  validar_param(param_num)
+
+  if(!is.numeric(param_num)){
+    usethis::ui_stop('Valor deve ser um valor numerico.')
+  }
+
+  return(TRUE)
+}
+
+# Validar parâmetros
+validar_param <- function(param){
+  if(missing(param) || is.null(param)){
+    usethis::ui_stop('Parametro necessario nao informado para a funcao.')
+  }
+
+  return(TRUE)
+}
+
+# Devolver uma base de dados de acordo com o produto
 base_produto_escolhido <- function(produto){
+  produto <- validar_produto(produto = produto)
+
   if(produto == 'megasena'){
     resultados <- loterrrias::megasena
   }
-  else if(produto == 'lotofacil'){
+  if(produto == 'lotofacil'){
     resultados <- loterrrias::lotofacil
   }
-  else if(produto == 'lotomania'){
+  if(produto == 'lotomania'){
     resultados <- loterrrias::lotomania
   }
-  else if(produto == 'quina'){
+  if(produto == 'quina'){
     resultados <- loterrrias::quina
   }
-  else if(produto == 'timemania'){
+  if(produto == 'timemania'){
     resultados <- loterrrias::timemania
   }
-  else if(produto == 'diadesorte'){
+  if(produto == 'diadesorte'){
     resultados <- loterrrias::diadesorte
   }
-  else if(produto == 'supersete'){
+  if(produto == 'supersete'){
     resultados <- loterrrias::supersete
-  }
-  else{
-    usethis::ui_stop('O produto informado nao existe.
-                     Verifique se digitou corretamente.
-                     A funcao produtos_existentes() exibe os valores possiveis.')
   }
 
   return(resultados)
 }
 
-# Consolida os dados e grava o dataset atualizado
-gravar_dataset <- function(df, file, produto){
-  temp <- atualizar_base(df, produto)
-
-  if(nrow(temp) > 0) {
-    temp <- ajustar_base(temp, produto)
-
-    df <- rbind(df, temp)
-
-    save(df, file = file, compress = T)
-  }
-  else{
-    usethis::ui_info(
-      glue::glue(
-        'Produto: {produto} | Base de resultados nao necessita atualizacao.'
-      )
-    )
-  }
-
-  return(df)
-}
-
 # Ajusta a base para o formato Wide
-ajustar_base <- function(df_resultados, produto = 'megasena'){
-  qtde_numeros <- 6
+ajustar_base <- function(df_resultados, produto){
 
-  switch (produto,
-          megasena = {qtde_numeros <- 6},
-          lotofacil = {qtde_numeros <- 15},
-          quina = {qtde_numeros <- 5},
-          lotomania = {qtde_numeros <- 20},
-          timemania = {qtde_numeros <- 7},
-          diadesorte = {qtde_numeros <- 7},
-          supersete = {qtde_numeros <- 7}
-  )
+  prods_disponiveis <- produtos_existentes() |>
+    dplyr::filter(parametro_produto == produto)
+
+  qtde_numeros <- prods_disponiveis$qtde_numeros_sorteio
 
   df_resultados$labels_nums <- ''
 
@@ -169,7 +147,7 @@ ajustar_base <- function(df_resultados, produto = 'megasena'){
 }
 
 # Atualiza os resultados (formato Long)
-atualizar_base <- function(df_resultados, produto = 'megasena', verbose = FALSE){
+atualizar_base <- function(df_resultados, produto, verbose = FALSE){
 
   if(is.null(df_resultados)){
     num_concurso <- 1
@@ -269,14 +247,7 @@ atualizar_base <- function(df_resultados, produto = 'megasena', verbose = FALSE)
             'Produto: {produto} | Recebido concurso: {num_concurso}.'
           )
         )
-      } else{
-        usethis::ui_info(
-          glue::glue(
-            'Produto: {produto} | Atualizando base de resultados.'
-          )
-        )
       }
-
 
     }
     num_concurso <- num_concurso + 1
@@ -285,4 +256,65 @@ atualizar_base <- function(df_resultados, produto = 'megasena', verbose = FALSE)
   rm(num_concurso, url_base, url, resultado_ok, resposta)
 
   return(df_final)
+}
+
+# Filtrar resultados para uso nas funções do pacote que buscam por resultados
+resultados_filtrados <- function(produto,
+                                 todos = FALSE,
+                                 ultimo = FALSE,
+                                 concurso_inicial,
+                                 concurso_final) {
+
+  produto <- validar_produto(produto)
+  df <- base_produto_escolhido(produto = produto)
+
+  novos_resultados <- atualizar_base(df_resultados = df, produto = produto)
+
+  if(nrow(novos_resultados) > 0 ){
+    novos_resultados <- ajustar_base(
+      df_resultados = novos_resultados,
+      produto = produto
+    )
+
+    df <- rbind(df,novos_resultados)
+  }
+
+  atual <- max(df$concurso)
+
+  if(todos){
+    return(df)
+  }
+  else if(ultimo){
+    df <- df |>
+      dplyr::filter(concurso == atual)
+    return(df)
+  }
+  else{
+    validar_param(concurso_inicial)
+    validar_param_num(concurso_inicial)
+
+    if(missing(concurso_final) || is.null(concurso_final)){
+      concurso_final = atual
+    }else{
+      validar_param_num(concurso_final)
+    }
+
+    df <- dplyr::filter(
+      df,
+      concurso >= concurso_inicial,
+      concurso <= concurso_final
+    )
+    return(df)
+  }
+}
+
+ajustar_texto <- function(texto){
+  str <- tolower(
+    stringi::stri_trans_general(
+      stringr::str_replace_all(texto, '[-|_| ]', ''),
+      'Latin-ASCII'
+    )
+  )
+
+  return(str)
 }

@@ -1,33 +1,4 @@
-#' Lista Produtos Disponíveis
-#'
-#' @description
-#' Utilize esta função para receber um conjunto de dados contendo todos os
-#' produtos disponíveis.
-#'
-#' @details
-#' Dataset retornado contém as seguintes variáveis:
-#' * __nome_produto__ Nome oficial do produto (character)
-#' * __parametro_produto__ String a ser utilizada como parâmetro ao executar as
-#' funções do pacote (character)
-#' * __qtde_numeros_sorteio__ Quantidade de números sorteados (numeric)
-#'
-#' @return Uma \code{tibble} com três variáveis.
-#' @export
-#'
-#' @examples
-#' # Retorna uma tibble contendo os produtos disponíveis
-#' produtos_existentes()
-produtos_existentes <- function(){
-  retorno <- data.frame(
-    nome_produto = c("Mega-sena", "Lotof\u00E1cil", "Quina", "Lotomania", "Timemania", "Super Sete", "Dia de Sorte"),
-    parametro_produto = c("megasena", "lotofacil", "quina", "lotomania", "timemania", "supersete", "diadesorte"),
-    qtde_numeros_sorteio = c(6,15,5,20,7,7,7)
-  ) |> tibble::tibble()
-
-  return(retorno)
-}
-
-#' Todos os Resultados
+#' Resultados de Todos os Concursos
 #'
 #' @description
 #' Utilize esta função para receber um conjunto de dados contendo todos os
@@ -45,9 +16,10 @@ produtos_existentes <- function(){
 #' * Dia de Sorte -> digite 'diadesorte' [diadesorte]
 #'
 #' @details
-#' __Importante__: o pacote atualiza as bases diariamente, porém, após instalá-lo
-#' é importante que faça a atualização manual quando desejar os resultados mais
-#' recentes. Utilize a função [atualizar_base_resultados] para este fim.
+#' __Importante__: o pacote atualiza as bases diariamente no repositório do GitHub,
+#' porém, sua base local permanece com os dados do momento em que o pacote foi
+#' instalado. Caso tenha intenção de usar as bases diretamente, sem chamar as
+#' funções, reinstale o pacote para obter as bases mais recentes.
 #'
 #' @return Uma \code{tibble} - a quantidade de variáveis depende do produto.
 #' @export
@@ -55,11 +27,14 @@ produtos_existentes <- function(){
 #' @examples
 #' # Visualizar concurso, números sorteados e se houve ganhador referente aos
 #' # resultados de todos os concursos da Megasena
-#' resultados_todos(produto = 'megasena') |>
+#' resultado_todos(produto = 'megasena') |>
 #'    dplyr::select(concurso, numeros_sorteados, houve_ganhador)
-resultados_todos <- function(produto = 'megasena'){
+resultado_todos <- function(produto = 'megasena'){
 
-  resultados <- base_produto_escolhido(produto)
+  resultados <- resultados_filtrados(
+    produto = produto,
+    todos=TRUE
+  )
 
   return(resultados)
 }
@@ -83,9 +58,10 @@ resultados_todos <- function(produto = 'megasena'){
 #' @param num_concurso Número do concurso que deseja obter o resultado.
 #'
 #' @details
-#' __Importante__: o pacote atualiza as bases diariamente, porém, após instalá-lo
-#' é importante que faça a atualização manual quando desejar os resultados mais
-#' recentes. Utilize a função [atualizar_base_resultados] para este fim.
+#' __Importante__: o pacote atualiza as bases diariamente no repositório do GitHub,
+#' porém, sua base local permanece com os dados do momento em que o pacote foi
+#' instalado. Caso tenha intenção de usar as bases diretamente, sem chamar as
+#' funções, reinstale o pacote para obter as bases mais recentes.
 #'
 #' @return Uma \code{tibble} - a quantidade de variáveis depende do produto.
 #' @export
@@ -96,25 +72,14 @@ resultados_todos <- function(produto = 'megasena'){
 #' resultado_concurso(produto = 'megasena', num_concurso = 1000) |>
 #'    dplyr::select(concurso, numeros_sorteados, houve_ganhador)
 resultado_concurso <- function(produto = 'megasena', num_concurso){
-  if(is.null(num_concurso)){
-    usethis::ui_stop('Nao foi informado um concurso.
-                     Para esta funcao, informe um concurso.')
-  }
 
-  if(!is.numeric(num_concurso)){
-    usethis::ui_stop('Valor de concurso invalido.
-                     Concurso deve ser um valor numerico.')
-  }
-
-  resultados <- base_produto_escolhido(produto)
-
-  df <- resultados_filtrados(
-    df_resultados = resultados,
+  resultados <- resultados_filtrados(
+    produto = produto,
     concurso_inicial = num_concurso,
     concurso_final = num_concurso
   )
 
-  return(df)
+  return(resultados)
 }
 
 #' Resultado de um Range de Concursos
@@ -140,9 +105,10 @@ resultado_concurso <- function(produto = 'megasena', num_concurso){
 #' recente que existir no dataset.
 #'
 #' @details
-#' __Importante__: o pacote atualiza as bases diariamente, porém, após instalá-lo
-#' é importante que faça a atualização manual quando desejar os resultados mais
-#' recentes. Utilize a função [atualizar_base_resultados] para este fim.
+#' __Importante__: o pacote atualiza as bases diariamente no repositório do GitHub,
+#' porém, sua base local permanece com os dados do momento em que o pacote foi
+#' instalado. Caso tenha intenção de usar as bases diretamente, sem chamar as
+#' funções, reinstale o pacote para obter as bases mais recentes.
 #'
 #' @return Uma \code{tibble} - a quantidade de variáveis depende do produto.
 #' @export
@@ -150,31 +116,20 @@ resultado_concurso <- function(produto = 'megasena', num_concurso){
 #' @examples
 #' # Visualizar concurso, números sorteados e se houve ganhador referentes aos
 #' # resultados dos concursos entre 1000 a 1500 da Megasena
-#' resultado_range_concursos(
+#' resultado_concursos(
 #'    produto = 'megasena',
 #'    num_concurso_inicial = 1000,
 #'    num_concurso_final = 1500
 #'  ) |> dplyr::select(concurso, numeros_sorteados, houve_ganhador)
-resultado_range_concursos <- function(produto = 'megasena', num_concurso_inicial, num_concurso_final){
-  if(is.null(num_concurso_inicial)){
-    usethis::ui_stop('Nao foi informado o concurso inicial.
-                     Para esta funcao, deve-se informar ao menos o concurso inicial.')
-  }
+resultado_concursos <- function(produto = 'megasena', num_concurso_inicial, num_concurso_final){
 
-  if(!(is.numeric(num_concurso_inicial) | is.numeric(num_concurso_final))){
-    usethis::ui_stop('Valor de concurso invalido.
-                     Concurso deve ser um valor numerico.')
-  }
-
-  resultados <- base_produto_escolhido(produto)
-
-  df <- resultados_filtrados(
-    df_resultados = resultados,
+  resultados <- resultados_filtrados(
+    produto = produto,
     concurso_inicial = num_concurso_inicial,
-    concurso_final = num_concurso_final
+    concurso_final  = num_concurso_final
   )
 
-  return(df)
+  return(resultados)
 }
 
 #' Resultado do Último Concurso
@@ -195,11 +150,10 @@ resultado_range_concursos <- function(produto = 'megasena', num_concurso_inicial
 #' * Dia de Sorte -> digite 'diadesorte' [diadesorte]
 #'
 #' @details
-#' __Importante__: o pacote atualiza as bases diariamente, porém, após instalá-lo
-#' é importante que faça a atualização manual quando desejar os resultados mais
-#' recentes. Utilize a função [atualizar_base_resultados] para este fim.
-#' No caso desta função, essa rotina citada de atualização de base é acionada
-#' automaticamente para o produto especificado.
+#' __Importante__: o pacote atualiza as bases diariamente no repositório do GitHub,
+#' porém, sua base local permanece com os dados do momento em que o pacote foi
+#' instalado. Caso tenha intenção de usar as bases diretamente, sem chamar as
+#' funções, reinstale o pacote para obter as bases mais recentes.
 #'
 #' @return Uma \code{tibble} - a quantidade de variáveis depende do produto.
 #' @export
@@ -207,67 +161,14 @@ resultado_range_concursos <- function(produto = 'megasena', num_concurso_inicial
 #' @examples
 #' # Visualizar concurso, números sorteados e se houve ganhador referente ao
 #' # resultado do concurso mais recente da Megasena
-#' resultados_ultimo_concurso(produto = 'megasena') |>
+#' resultado_ultimo_concurso(produto = 'megasena') |>
 #'    dplyr::select(concurso, numeros_sorteados, houve_ganhador)
-resultados_ultimo_concurso <- function(produto = 'megasena'){
+resultado_ultimo_concurso <- function(produto = 'megasena'){
 
-  resultados <- atualizar_base_resultados(produto = produto)
-
-  ultimo_concurso <- max(resultados$concurso)
-
-  resultados <- resultados |>
-    dplyr::filter(concurso == ultimo_concurso)
+  resultados <- resultados_filtrados(
+    produto = produto,
+    ultimo=TRUE
+  )
 
   return(resultados)
-}
-
-
-# Funcoes auxiliares ------------------------------------------------------
-
-base_produto_escolhido <- function(produto){
-  if(produto == 'megasena'){
-    resultados <- loterrrias::megasena
-  }
-  else if(produto == 'lotofacil'){
-    resultados <- loterrrias::lotofacil
-  }
-  else if(produto == 'lotomania'){
-    resultados <- loterrrias::lotomania
-  }
-  else if(produto == 'quina'){
-    resultados <- loterrrias::quina
-  }
-  else if(produto == 'timemania'){
-    resultados <- loterrrias::timemania
-  }
-  else if(produto == 'diadesorte'){
-    resultados <- loterrrias::diadesorte
-  }
-  else if(produto == 'supersete'){
-    resultados <- loterrrias::supersete
-  }
-  else{
-    usethis::ui_stop('O produto informado nao existe.
-                     Verifique se digitou corretamente.
-                     A funcao produtos_existentes() exibe os valores possiveis.')
-  }
-
-  return(resultados)
-}
-
-resultados_filtrados <- function(df_resultados, concurso_inicial = 1, concurso_final = NULL){
-  if(is.null(concurso_final)){
-    df <- dplyr::filter(
-      df_resultados,
-      concurso >= concurso_inicial
-    )
-    return(df)
-  }else{
-    df <- dplyr::filter(
-      df_resultados,
-      concurso >= concurso_inicial,
-      concurso <= concurso_final
-    )
-    return(df)
-  }
 }

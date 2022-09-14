@@ -30,9 +30,10 @@ Utilize esta função para receber um conjunto de dados contendo o resultado
 de um concurso específico.
 }
 \details{
-\strong{Importante}: o pacote atualiza as bases diariamente, porém, após instalá-lo
-é importante que faça a atualização manual quando desejar os resultados mais
-recentes. Utilize a função \link{atualizar_base_resultados} para este fim.
+\strong{Importante}: o pacote atualiza as bases diariamente no repositório do GitHub,
+porém, sua base local permanece com os dados do momento em que o pacote foi
+instalado. Caso tenha intenção de usar as bases diretamente, sem chamar as
+funções, reinstale o pacote para obter as bases mais recentes.
 }
 \examples{
 # Visualizar concurso, números sorteados e se houve ganhador referente ao
