@@ -17,13 +17,20 @@ de técnicas de Web Scraping.
 Caso necessário, é possível fazer download das base de dados em formado
 **xlsx** através dos links abaixo:
 
--   [Dia_de_Sorte`.xlsx`](https://github.com/AlceuPantoni/loterrrias/tree/main/data-raw/resultados_diadesorte.xlsx?raw=true)
--   [Lotofacil`.xlsx`](https://github.com/AlceuPantoni/loterrrias/tree/main/data-raw/resultados_lotofacil.xlsx?raw=true)
--   [Lotomania`.xlsx`](https://github.com/AlceuPantoni/loterrrias/tree/main/data-raw/resultados_lotomania.xlsx?raw=true)
--   [Mega-Sena`.xlsx`](https://github.com/AlceuPantoni/loterrrias/tree/main/data-raw/resultados_megasena.xlsx?raw=true)
--   [Quina`.xlsx`](https://github.com/AlceuPantoni/loterrrias/tree/main/data-raw/resultados_quina.xlsx?raw=true)
--   [Super_Sete`.xlsx`](https://github.com/AlceuPantoni/loterrrias/tree/main/data-raw/resultados_supersete.xlsx?raw=true)
--   [Timemania`.xlsx`](https://github.com/AlceuPantoni/loterrrias/tree/main/data-raw/resultados_timemania.xlsx?raw=true)
+-   ***Dia de Sorte***
+    [Dia_de_Sorte`.xlsx`](https://raw.githubusercontent.com/AlceuPantoni/loterrrias/main/data-raw/resultados_diadesorte.xlsx)
+-   ***Lotofácil***
+    [Lotofacil`.xlsx`](https://raw.githubusercontent.com/AlceuPantoni/loterrrias/main/data-raw/resultados_lotofacil.xlsx)
+-   ***Lotomania***
+    [Lotomania`.xlsx`](https://raw.githubusercontent.com/AlceuPantoni/loterrrias/main/data-raw/resultados_lotomania.xlsx)
+-   ***Mega-Sena***
+    [Mega_Sena`.xlsx`](https://raw.githubusercontent.com/AlceuPantoni/loterrrias/main/data-raw/resultados_megasena.xlsx)
+-   ***Quina***
+    [Quina`.xlsx`](https://raw.githubusercontent.com/AlceuPantoni/loterrrias/main/data-raw/resultados_quina.xlsx)
+-   ***Super Sete***
+    [Super_Sete`.xlsx`](https://raw.githubusercontent.com/AlceuPantoni/loterrrias/main/data-raw/resultados_supersete.xlsx)
+-   ***Timemania***
+    [Timemania`.xlsx`](https://raw.githubusercontent.com/AlceuPantoni/loterrrias/main/data-raw/resultados_timemania.xlsx)
 
 ## Instalação
 
