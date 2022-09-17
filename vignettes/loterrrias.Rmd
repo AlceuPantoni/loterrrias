@@ -1,0 +1,78 @@
+---
+title: "Utilizando o pacote loterrrias"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{loterrrias}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+Segue um resumo do uso das funções disponíveis no pacote __loterrrias__.
+
+Para ter acesso aos produtos das Loterias presentes no pacote:
+
+```{r eval=TRUE, message=FALSE, warning=FALSE, include=TRUE}
+loterrrias::produtos_existentes() |> 
+  knitr::kable()
+```
+
+Para obter um resumo do histórico de todos os produtos:
+
+```{r eval=TRUE, message=FALSE, warning=FALSE, include=TRUE}
+loterrrias::historico_resumido_produtos() |> 
+  knitr::kable()
+```
+
+
+Para obter todos os resultados de um determinado produto:
+
+```{r eval=TRUE, message=FALSE, warning=FALSE, include=TRUE}
+mega_sena <- loterrrias::resultado_todos(produto = 'megasena')
+
+mega_sena |> 
+  tail(10) |> 
+  knitr::kable()
+```
+
+Para obter o resultado de um determinado concurso de um produto:
+
+```{r eval=TRUE, message=FALSE, warning=FALSE, include=TRUE}
+quina <- loterrrias::resultado_concurso(produto = 'quina', num_concurso = 1)
+
+quina |> 
+  tail(10) |> 
+  knitr::kable()
+```
+
+Para obter os resultados de um range de concursos de um produto:
+
+```{r eval=TRUE, message=FALSE, warning=FALSE, include=TRUE}
+time_mania <- loterrrias::resultado_concursos(
+  produto = 'timemania',
+  num_concurso_inicial = 1801,
+  num_concurso_final = 1810
+)
+
+time_mania |> 
+  tail(10) |> 
+  knitr::kable()
+```
+
+Para obter o resultado do último concurso de um produto:
+
+```{r eval=TRUE, message=FALSE, warning=FALSE, include=TRUE}
+dia_de_sorte <- loterrrias::resultado_ultimo_concurso(produto = 'diadesorte')
+
+dia_de_sorte |> 
+  tail(10) |> 
+  knitr::kable()
+```

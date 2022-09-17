@@ -23,3 +23,7 @@ Imports:
     tibble,
     tidyr,
     usethis
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
