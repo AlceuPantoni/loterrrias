@@ -1,0 +1,65 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# Pacote Loterrrias <img src="man/figures/logo.png" align="right" height="139" />
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Este pacote tem por objetivo disponilizar os dados dos produtos das Loterias do
+Brasil.
+
+Os dados foram obtidos diretamente do site das [Loterias](https://loterias.caixa.gov.br/Paginas/default.aspx) da [Caixa](https://www.caixa.gov.br/Paginas/home-caixa.aspx) através do uso de
+técnicas de Web Scraping.
+
+Caso necessário, é possível fazer download das base de dados em formado __xlsx__
+através dos links abaixo:
+
+  - [resultados_diadesorte`.xlsx`](https://github.com/AlceuPantoni/loterrrias/tree/main/data-raw/resultados_diadesorte.xlsx?raw=true)
+  - [resultados_diadesorte`.xlsx`](https://github.com/AlceuPantoni/loterrrias/tree/main/data-raw/resultados_lotofacil.xlsx?raw=true)
+  - [resultados_diadesorte`.xlsx`](https://github.com/AlceuPantoni/loterrrias/tree/main/data-raw/resultados_lotomania.xlsx?raw=true)
+  - [resultados_diadesorte`.xlsx`](https://github.com/AlceuPantoni/loterrrias/tree/main/data-raw/resultados_megasena.xlsx?raw=true)
+  - [resultados_diadesorte`.xlsx`](https://github.com/AlceuPantoni/loterrrias/tree/main/data-raw/resultados_quina.xlsx?raw=true)
+  - [resultados_diadesorte`.xlsx`](https://github.com/AlceuPantoni/loterrrias/tree/main/data-raw/resultados_supersete.xlsx?raw=true)
+  - [resultados_diadesorte`.xlsx`](https://github.com/AlceuPantoni/loterrrias/tree/main/data-raw/resultados_timemania.xlsx?raw=true)
+
+## Instalação
+
+O pacote loterrrias pode ser instalado através do [GitHub](https://github.com/)
+utilizando o código abaixo em seu R:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("AlceuPantoni/loterrrias")
+```
+
+## Exemplos de uso
+
+Abaixo, como exemplo, segue um dos conjuntos de dados disponíveis, referente ao
+produto Mega-Sena.
+
+```{r eval=TRUE, message=FALSE, warning=FALSE, include=TRUE}
+mega_sena <- loterrrias::resultado_todos(produto = 'megasena') |> 
+  tail(7) |> 
+  knitr::kable()
+```
+
+Neste outro caso de uso, temos um resumo histórico de todos os produtos das
+Loterias disponíveis no pacote.
+
+```{r eval=TRUE, message=FALSE, warning=FALSE, include=TRUE}
+loterrrias::historico_resumido_produtos() |> 
+  knitr::kable()
+```
