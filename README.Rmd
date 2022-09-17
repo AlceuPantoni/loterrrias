@@ -52,7 +52,8 @@ produto Mega-Sena.
 
 ```{r eval=TRUE, message=FALSE, warning=FALSE, include=TRUE}
 loterrrias::resultado_todos(produto = 'megasena') |> 
-  tail(7) |> 
+  dplyr::arrange(desc(concurso)) |> 
+  head(7) |> 
   knitr::kable()
 ```
 
