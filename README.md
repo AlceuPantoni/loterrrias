@@ -41,10 +41,20 @@ Abaixo, como exemplo, segue um dos conjuntos de dados disponíveis,
 referente ao produto Mega-Sena.
 
 ``` r
-mega_sena <- loterrrias::resultado_todos(produto = 'megasena') |> 
+loterrrias::resultado_todos(produto = 'megasena') |> 
   tail(7) |> 
   knitr::kable()
 ```
+
+| data_apuracao | concurso | houve_ganhador | valor_premio_maximo | numeros_sorteados | num_1 | num_2 | num_3 | num_4 | num_5 | num_6 |
+|:--------------|---------:|---------------:|--------------------:|:------------------|------:|------:|------:|------:|------:|------:|
+| 2022-08-27    |     2514 |              0 |                   0 | 5;15;24;34;45;52  |     5 |    15 |    24 |    34 |    45 |    52 |
+| 2022-08-31    |     2515 |              0 |                   0 | 3;12;19;41;45;54  |     3 |    12 |    19 |    41 |    45 |    54 |
+| 2022-09-03    |     2516 |              0 |                   0 | 8;17;49;51;52;53  |     8 |    17 |    49 |    51 |    52 |    53 |
+| 2022-09-08    |     2517 |              0 |                   0 | 1;5;6;16;22;39    |     1 |     5 |     6 |    16 |    22 |    39 |
+| 2022-09-10    |     2518 |              0 |                   0 | 3;22;23;44;53;60  |     3 |    22 |    23 |    44 |    53 |    60 |
+| 2022-09-13    |     2519 |              0 |                   0 | 3;8;20;36;38;57   |     3 |     8 |    20 |    36 |    38 |    57 |
+| 2022-09-15    |     2520 |              0 |                   0 | 2;17;22;41;58;60  |     2 |    17 |    22 |    41 |    58 |    60 |
 
 Neste outro caso de uso, temos um resumo histórico de todos os produtos
 das Loterias disponíveis no pacote.

@@ -51,7 +51,7 @@ Abaixo, como exemplo, segue um dos conjuntos de dados disponíveis, referente ao
 produto Mega-Sena.
 
 ```{r eval=TRUE, message=FALSE, warning=FALSE, include=TRUE}
-mega_sena <- loterrrias::resultado_todos(produto = 'megasena') |> 
+loterrrias::resultado_todos(produto = 'megasena') |> 
   tail(7) |> 
   knitr::kable()
 ```
