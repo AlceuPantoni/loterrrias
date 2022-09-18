@@ -66,7 +66,6 @@
 </h1>
 </div>
 <!-- badges: start -->
-<!-- badges: end -->
 <p>Este pacote tem por objetivo disponilizar os dados dos produtos das Loterias do Brasil.</p>
 <p>Os dados foram obtidos diretamente do site das <a href="https://loterias.caixa.gov.br/Paginas/default.aspx" class="external-link">Loterias</a> da <a href="https://www.caixa.gov.br/Paginas/home-caixa.aspx" class="external-link">Caixa</a> através do uso de técnicas de Web Scraping.</p>
 <p>Caso necessário, é possível fazer download das base de dados em formado <strong>xlsx</strong> através dos links abaixo:</p>
@@ -99,7 +98,7 @@
 <p>O pacote loterrrias pode ser instalado através do <a href="https://github.com/" class="external-link">GitHub</a> utilizando o código abaixo em seu R:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"AlceuPantoni/loterrrias"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"AlceuPantoni/loterrrias"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="exemplos-de-uso">Exemplos de uso<a class="anchor" aria-label="anchor" href="#exemplos-de-uso"></a>
@@ -139,19 +138,6 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">2022-09-15</td>
-<td align="right">2520</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">2;17;22;41;58;60</td>
-<td align="right">2</td>
-<td align="right">17</td>
-<td align="right">22</td>
-<td align="right">41</td>
-<td align="right">58</td>
-<td align="right">60</td>
-</tr>
-<tr class="even">
 <td align="left">2022-09-13</td>
 <td align="right">2519</td>
 <td align="right">0</td>
@@ -164,7 +150,7 @@
 <td align="right">38</td>
 <td align="right">57</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">2022-09-10</td>
 <td align="right">2518</td>
 <td align="right">0</td>
@@ -177,7 +163,7 @@
 <td align="right">53</td>
 <td align="right">60</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">2022-09-08</td>
 <td align="right">2517</td>
 <td align="right">0</td>
@@ -190,7 +176,7 @@
 <td align="right">22</td>
 <td align="right">39</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">2022-09-03</td>
 <td align="right">2516</td>
 <td align="right">0</td>
@@ -203,7 +189,7 @@
 <td align="right">52</td>
 <td align="right">53</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">2022-08-31</td>
 <td align="right">2515</td>
 <td align="right">0</td>
@@ -216,7 +202,7 @@
 <td align="right">45</td>
 <td align="right">54</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">2022-08-27</td>
 <td align="right">2514</td>
 <td align="right">0</td>
@@ -228,6 +214,19 @@
 <td align="right">34</td>
 <td align="right">45</td>
 <td align="right">52</td>
+</tr>
+<tr class="odd">
+<td align="left">2022-08-24</td>
+<td align="right">2513</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="left">13;19;21;35;46;50</td>
+<td align="right">13</td>
+<td align="right">19</td>
+<td align="right">21</td>
+<td align="right">35</td>
+<td align="right">46</td>
+<td align="right">50</td>
 </tr>
 </tbody>
 </table>
@@ -381,7 +380,15 @@
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/AlceuPantoni/loterrrias/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/AlceuPantoni/loterrrias/actions/workflows/R-CMD-check.yaml/badge.svg?branch=main" alt="R-CMD-Check"></a></li>
+<li><a href="https://github.com/AlceuPantoni/loterrrias/actions/workflows/update-data.yaml" class="external-link"><img src="https://github.com/AlceuPantoni/loterrrias/actions/workflows/update-data.yaml/badge.svg?branch=main" alt="update-data"></a></li>
+<li><a href="https://github.com/AlceuPantoni/loterrrias/actions/workflows/test-coverage.yaml" class="external-link"><img src="https://github.com/AlceuPantoni/loterrrias/actions/workflows/test-coverage.yaml/badge.svg?branch=main" alt="test-coverage"></a></li>
+<li><a href="https://codecov.io/gh/AlceuPantoni/loterrrias?branch=master" class="external-link"><img src="https://codecov.io/gh/AlceuPantoni/loterrrias/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+</ul>
+</div>
 
   </aside>
 </div>
