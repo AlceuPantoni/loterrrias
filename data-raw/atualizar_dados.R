@@ -41,3 +41,7 @@ usethis::use_data(lotomania, overwrite = TRUE)
 usethis::use_data(timemania, overwrite = TRUE)
 usethis::use_data(supersete, overwrite = TRUE)
 usethis::use_data(diadesorte, overwrite = TRUE)
+
+rmarkdown::render("README.Rmd")
+
+pkgdown::build_site()

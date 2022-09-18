@@ -31,35 +31,32 @@ validar_produto <- function(produto){
 validar_concurso <- function(numero_concurso){
   if(missing(numero_concurso) || is.null(numero_concurso)){
     usethis::ui_stop('Concurso nao informado ou nulo.
-                     Para esta funcao, informe um concurso.')
+                   Para esta funcao, informe um concurso.')
   }
 
-  if(!is.numeric(num_concurso)){
+  if(!is.numeric(numero_concurso)){
     usethis::ui_stop('Valor de concurso invalido.
                      Concurso deve ser um valor numerico.')
   }
 
-  return(TRUE)
-}
-
-# Validar parâmetros numericos
-validar_param_num <- function(param_num){
-  validar_param(param_num)
-
-  if(!is.numeric(param_num)){
-    usethis::ui_stop('Valor deve ser um valor numerico.')
+  if(numero_concurso <= 0){
+    usethis::ui_stop('Valor de concurso invalido.
+                     Concurso deve ser maior que zero.')
   }
 
   return(TRUE)
 }
 
-# Validar parâmetros
-validar_param <- function(param){
-  if(missing(param) || is.null(param)){
-    usethis::ui_stop('Parametro necessario nao informado para a funcao.')
-  }
+# Limpar texto para padronizar as strings
+ajustar_texto <- function(texto){
+  str <- tolower(
+    stringi::stri_trans_general(
+      stringr::str_replace_all(texto, '[-|_| ]', ''),
+      'Latin-ASCII'
+    )
+  )
 
-  return(TRUE)
+  return(str)
 }
 
 # Devolver uma base de dados de acordo com o produto
@@ -290,31 +287,19 @@ resultados_filtrados <- function(produto,
     return(df)
   }
   else{
-    validar_param(concurso_inicial)
-    validar_param_num(concurso_inicial)
-
     if(missing(concurso_final) || is.null(concurso_final)){
       concurso_final = atual
-    }else{
-      validar_param_num(concurso_final)
     }
+
+    validar_concurso(concurso_inicial)
+    validar_concurso(concurso_final)
 
     df <- dplyr::filter(
       df,
       concurso >= concurso_inicial,
       concurso <= concurso_final
     )
+
     return(df)
   }
-}
-
-ajustar_texto <- function(texto){
-  str <- tolower(
-    stringi::stri_trans_general(
-      stringr::str_replace_all(texto, '[-|_| ]', ''),
-      'Latin-ASCII'
-    )
-  )
-
-  return(str)
 }
