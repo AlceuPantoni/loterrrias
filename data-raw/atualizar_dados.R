@@ -1,4 +1,9 @@
 ## Preparação das bases de dados de todos os produtos
+
+devtools::load_all()
+
+httr::set_config(httr::config(ssl_verifypeer = FALSE))
+
 raw_atualizar_dados <- function(produto){
 
   file <- glue::glue("data-raw/resultados_{produto}.xlsx")
