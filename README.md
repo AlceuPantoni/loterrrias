@@ -9,7 +9,7 @@
 [![update-data](https://github.com/AlceuPantoni/loterrrias/actions/workflows/update-data.yaml/badge.svg)](https://github.com/AlceuPantoni/loterrrias/actions/workflows/update-data.yaml)
 [![test-coverage](https://github.com/AlceuPantoni/loterrrias/actions/workflows/test-coverage.yaml/badge.svg?branch=main)](https://github.com/AlceuPantoni/loterrrias/actions/workflows/test-coverage.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/AlceuPantoni/loterrrias/branch/master/graph/badge.svg)](https://codecov.io/gh/AlceuPantoni/loterrrias?branch=master)
+coverage](https://codecov.io/gh/AlceuPantoni/loterrrias/branch/main/graph/badge.svg)](https://codecov.io/gh/AlceuPantoni/loterrrias?branch=main)
 <!-- badges: end -->
 
 Este pacote tem por objetivo disponilizar os dados dos produtos das
