@@ -1,6 +1,6 @@
 on:
   schedule:
-  - cron: "45 0 * * *"
+  - cron: "0 3 * * *"
 
 name: update-data
 
