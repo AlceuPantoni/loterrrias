@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # Pacote Loterrrias <img src="man/figures/logo.png" align="right" height="139" />
 
 <!-- badges: start -->
+[![R-CMD-Check](https://github.com/AlceuPantoni/loterrrias/actions/workflows/R-CMD-check.yaml/badge.svg?branch=main)](https://github.com/AlceuPantoni/loterrrias/actions/workflows/R-CMD-check.yaml) [![update-data](https://github.com/AlceuPantoni/loterrrias/actions/workflows/update-data.yaml/badge.svg?branch=main)](https://github.com/AlceuPantoni/loterrrias/actions/workflows/update-data.yaml)
 <!-- badges: end -->
 
 Este pacote tem por objetivo disponilizar os dados dos produtos das Loterias do
