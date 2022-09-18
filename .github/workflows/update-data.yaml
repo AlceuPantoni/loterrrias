@@ -39,9 +39,6 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add data/.
-          git add README.md
-          git add README.Rmd
-          git add docs/.
+          git add .
           git commit -m 'Update data' || echo "Update data"
           git push origin || echo "Update data"
