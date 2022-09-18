@@ -1,7 +1,6 @@
 on:
   schedule:
   - cron: "45 0 * * *"
-  workflow_dispatch:
 
 name: update-data
 
@@ -21,7 +20,7 @@ jobs:
             any::pkgload
       - uses: r-lib/actions/setup-pandoc@v2
 
-       - name: Install rmarkdown, remotes, and the local package
+      - name: Install rmarkdown, remotes, and the local package
         run: |
           install.packages("remotes")
           remotes::install_local(".")
