@@ -30,6 +30,7 @@ jobs:
           remotes::install_cran("usethis")
           remotes::install_cran("rmarkdown")
           remotes::install_cran("pkgdown")
+          remotes::install_cran("devtools")
         shell: Rscript {0}
 
       - name: Execute Script
@@ -39,6 +40,6 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add .
-          git commit -m 'Update data' || echo "Update data"
-          git push origin || echo "Update data"
+          git add . || echo "Sem alteracoes"
+          git commit -m 'Atualizando dados' || echo "Sem alteracoes"
+          git push origin || echo "Sem alteracoes"

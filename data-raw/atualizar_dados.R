@@ -1,4 +1,5 @@
 ## Preparação das bases de dados de todos os produtos
+devtools::load_all()
 
 raw_atualizar_dados <- function(produto){
 
