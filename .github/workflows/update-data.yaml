@@ -21,9 +21,21 @@ jobs:
             any::pkgload
       - uses: r-lib/actions/setup-pandoc@v2
 
+       - name: Install rmarkdown, remotes, and the local package
+        run: |
+          install.packages("remotes")
+          remotes::install_local(".")
+          remotes::install_cran("readxl")
+          remotes::install_cran("writexl")
+          remotes::install_cran("usethis")
+          remotes::install_cran("rmarkdown")
+          remotes::install_cran("pkgdown")
+        shell: Rscript {0}
+
       - name: Execute Script
         run: |
           Rscript data-raw/atualizar_dados.R
+
       - name: Commit results
         run: |
           git config --local user.email "actions@github.com"
