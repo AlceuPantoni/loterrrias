@@ -45,7 +45,6 @@ raw_atualizar_dados <- function(produto){
   )
 
   if(nrow(temp)>0){
-    print(paste0('Dados recebidos para o produto ',produto))
     df <- rbind(df, temp)
   }
 

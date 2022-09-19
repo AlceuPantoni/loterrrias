@@ -202,7 +202,10 @@ atualizar_base <- function(df_resultados, produto, verbose = FALSE){
       data_apuracao <- lubridate::as_date(data_apuracao)
       rm(partes_data)
       concurso <- as.numeric(em_json$numero)
-      houve_ganhador <- ifelse(!em_json$acumulado,1,0)
+      qtde_ganhadores <- em_json$listaRateioPremio |>
+        dplyr::filter(faixa == 1) |>
+        dplyr::select(numeroDeGanhadores) |> as.numeric()
+      houve_ganhador <- ifelse(qtde_ganhadores>0,1,0)
       valor_premio_maximo <- em_json$listaRateioPremio |>
         dplyr::filter(faixa == 1) |>
         dplyr::select(valorPremio) |> as.numeric()
