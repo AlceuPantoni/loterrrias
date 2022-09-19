@@ -153,7 +153,7 @@ atualizar_base <- function(df_resultados, produto, verbose = FALSE){
   }
 
   url_base <- glue::glue(
-    "https://servicebus2.caixa.gov.br/portaldeloterias/api/{produto}/"
+    "https://servicebus2.caixa.gov.br/portaldeloterias/api/megasena/2520"
   )
 
   resultado_ok <- TRUE
@@ -185,7 +185,7 @@ atualizar_base <- function(df_resultados, produto, verbose = FALSE){
 
     url = paste0(url_base,num_concurso)
 
-    resposta <- httr::GET(url = url, config = httr::config(ssl_verifypeer = F))
+    resposta <- httr::GET(url = url_base, config = httr::config(ssl_verifypeer = F))
 
     if(resposta$status_code == 200){
       resultado_ok = TRUE
@@ -234,7 +234,7 @@ atualizar_base <- function(df_resultados, produto, verbose = FALSE){
       }
       else{
         tmp_df <- data.frame(data_apuracao, concurso, houve_ganhador,
-                             valor_premio_maximo, numeros_sorteados)
+                             valor_premio_maximo, numeros_sorteados, qtde_ganhadores)
         df_final <- rbind(df_final, tmp_df)
 
         rm(tmp_df, data_apuracao, concurso, houve_ganhador,
