@@ -1,6 +1,6 @@
 Package: loterrrias
 Title: Dados das Loterias Brasileira
-Version: 0.1.1
+Version: 0.1.0
 Authors@R: 
     person("Alceu", "Pantoni Neto", , "alceu.pantoni@gmail.com",role = c("aut", "cre"),
            comment = c(ORCID = ""))
