@@ -234,7 +234,7 @@ atualizar_base <- function(df_resultados, produto, verbose = FALSE){
       }
       else{
         tmp_df <- data.frame(data_apuracao, concurso, houve_ganhador,
-                             valor_premio_maximo, numeros_sorteados, qtde_ganhadores)
+                             valor_premio_maximo, numeros_sorteados)
         df_final <- rbind(df_final, tmp_df)
 
         rm(tmp_df, data_apuracao, concurso, houve_ganhador,
