@@ -1,10 +1,34 @@
 ## Preparação das bases de dados de todos os produtos
+install.packages(
+  c("stringr",
+    "glue",
+    "httr",
+    "jsonlite",
+    "janitor",
+    "tibble",
+    "dplyr",
+    "readr",
+    "usethis",
+    "devtools",
+    "purrr",
+    "httr",
+    "lubridate",
+    "stringi",
+    "tidyr",
+    "knitr",
+    "readxl",
+    "writexl",
+    "rmarkdown",
+    "pkgdown"
+  ),
+  repos = "https://packagemanager.rstudio.com/all/__linux__/focal/latest"
+)
+
 devtools::load_all()
 
 httr::set_config(httr::config(ssl_verifypeer = FALSE))
 
 raw_atualizar_dados <- function(produto){
-
   file <- glue::glue("data-raw/resultados_{produto}.xlsx")
 
   df <- NULL

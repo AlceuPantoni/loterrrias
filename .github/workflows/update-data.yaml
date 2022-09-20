@@ -4,60 +4,31 @@ on:
   workflow_dispatch:
 
 name: update-data
-
 jobs:
   render:
     name: update-data
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-
       - uses: r-lib/actions/setup-r@v1
         with:
           r-version: ${{ matrix.config.r }}
           http-user-agent: ${{ matrix.config.http-user-agent }}
-
       - uses: r-lib/actions/setup-pandoc@v1
-
       - name: Instalando libs de sistema
         run: |
           sudo apt update
           sudo apt install libudunits2-dev libgdal-dev
           sudo apt install libprotobuf-dev protobuf-compiler
           sudo apt install libjq-dev
-          sudo apt install libgit2-dev
-          sudo apt install libcurl4-openssl-dev
-          sudo apt install libssl-dev
-          sudo apt install libxml2-dev
-
-      - name: Instalando pacotes
-          install.packages("remotes")
-          remotes::install_local(".")
-          remotes::install_cran("devtools")
-          remotes::install_cran("usethis")
-          remotes::install_cran("pkgdown")
-          remotes::install_cran("rmarkdown")
-          remotes::install_cran("dplyr")
-          remotes::install_cran("stringr")
-          remotes::install_cran("purrr")
-          remotes::install_cran("tidyr")
-          remotes::install_cran("stringi")
-          remotes::install_cran("lubridate")
-          remotes::install_cran("httr")
-          remotes::install_cran("jsonlite")
-          remotes::install_cran("readr")
-          remotes::install_cran("tibble")
-          remotes::install_cran("glue")
-          remotes::install_cran("readxl")
-          remotes::install_cran("writexl")
-          remotes::install_cran("janitor")
-          remotes::install_cran("knitr")
-
+          sudo add-apt-repository ppa:cran/libgit2
+          sudo apt-get install libgit2-dev
+          sudo apt-get install libcurl4-openssl-dev
+          sudo apt-get install libssl-dev
+          sudo apt-get install libxml2-dev
       - name: Execute Script
         run: |
           Rscript data-raw/atualizar_dados.R
-
       - name: Commit results
         run: |
           git config --local user.email "actions@github.com"
