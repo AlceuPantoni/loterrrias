@@ -1,7 +1,7 @@
 pandoc: 2.7.3
-pkgdown: 2.0.7
+pkgdown: 2.0.8
 pkgdown_sha: ~
 articles:
   loterrrias: loterrrias.html
-last_built: 2024-04-11T04:40Z
+last_built: 2024-04-12T04:39Z
 
