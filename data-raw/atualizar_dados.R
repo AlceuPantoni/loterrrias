@@ -11,7 +11,6 @@ install.packages(
     "usethis",
     "devtools",
     "purrr",
-    "httr",
     "lubridate",
     "stringi",
     "tidyr",
@@ -21,7 +20,7 @@ install.packages(
     "rmarkdown",
     "pkgdown"
   ),
-  repos = "https://packagemanager.rstudio.com/all/__linux__/focal/latest"
+  repos = "https://packagemanager.rstudio.com/all/__linux__/jammy/latest"
 )
 
 devtools::load_all()
