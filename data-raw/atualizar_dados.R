@@ -20,7 +20,7 @@ install.packages(
     "rmarkdown",
     "pkgdown"
   ),
-  repos = "https://packagemanager.rstudio.com/all/__linux__/jammy/latest"
+  repos = "https://packagemanager.rstudio.com/all/__linux__/jammy/latest" ## Atualizar de acordo com a versão do S.O.
 )
 
 devtools::load_all()
