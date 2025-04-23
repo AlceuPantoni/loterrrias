@@ -23,7 +23,6 @@ jobs:
           sudo apt install -y libudunits2-dev libgdal-dev
           sudo apt install -y libprotobuf-dev protobuf-compiler
           sudo apt install -y libjq-dev
-          sudo add-apt-repository -y ppa:cran/libgit2
           sudo apt update
           sudo apt install -y libgit2-dev
           sudo apt install -y libcurl4-openssl-dev
