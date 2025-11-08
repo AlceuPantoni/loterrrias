@@ -1,16 +1,4 @@
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# loterrrias <img src="man/figures/logo.png" align="right" height="139" />
-
-<!-- badges: start -->
-
-[![R-CMD-Check](https://github.com/AlceuPantoni/loterrrias/actions/workflows/R-CMD-check.yaml/badge.svg?branch=main)](https://github.com/AlceuPantoni/loterrrias/actions/workflows/R-CMD-check.yaml)
-[![update-data](https://github.com/AlceuPantoni/loterrrias/actions/workflows/update-data.yaml/badge.svg)](https://github.com/AlceuPantoni/loterrrias/actions/workflows/update-data.yaml)
-[![test-coverage](https://github.com/AlceuPantoni/loterrrias/actions/workflows/test-coverage.yaml/badge.svg?branch=main)](https://github.com/AlceuPantoni/loterrrias/actions/workflows/test-coverage.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/AlceuPantoni/loterrrias/branch/main/graph/badge.svg)](https://codecov.io/gh/AlceuPantoni/loterrrias?branch=main)
-<!-- badges: end -->
+# loterrrias
 
 Este pacote tem por objetivo disponilizar os dados de diversos produtos
 das Loterias da Caixa.
