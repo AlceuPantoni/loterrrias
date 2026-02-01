@@ -50,7 +50,7 @@ recentes.
 # resultados de todos os concursos da Megasena
 resultado_todos(produto = 'megasena') |>
    dplyr::select(concurso, numeros_sorteados, houve_ganhador)
-#> # A tibble: 2,966 × 3
+#> # A tibble: 2,967 × 3
 #>    concurso numeros_sorteados houve_ganhador
 #>       <dbl> <chr>                      <dbl>
 #>  1        1 4;5;30;33;41;52                0
@@ -63,5 +63,5 @@ resultado_todos(produto = 'megasena') |>
 #>  8        8 4;17;37;38;47;53               0
 #>  9        9 8;43;54;55;56;60               0
 #> 10       10 4;18;21;25;38;57               0
-#> # ℹ 2,956 more rows
+#> # ℹ 2,957 more rows
 ```
