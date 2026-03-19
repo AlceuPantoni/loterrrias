@@ -1,4 +1,4 @@
-on:
+"on":
   schedule:
     - cron: "30 4 * * *"
   workflow_dispatch:
@@ -7,7 +7,6 @@ name: update-data
 
 jobs:
   render:
-					 
     runs-on: ubuntu-22.04
 
     steps:
@@ -43,5 +42,5 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add . || echo "Sem alteracoes"
-          git commit -m 'Atualizando dados' || echo "Sem alteracoes"
+          git commit -m "Atualizando dados" || echo "Sem alteracoes"
           git push origin || echo "Sem alteracoes"
