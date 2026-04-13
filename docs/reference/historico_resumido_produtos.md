@@ -53,7 +53,7 @@ historico_resumido_produtos() |>
 #> 2 Lotofácil                    3659                    0.88
 #> 3 Quina                        6999                    0.38
 #> 4 Lotomania                    2910                    0.24
-#> 5 Timemania                    2378                    0.03
+#> 5 Timemania                    2379                    0.03
 #> 6 Super Sete                    833                    0.04
-#> 7 Dia de Sorte                 1199                    0.3 
+#> 7 Dia de Sorte                 1200                    0.3 
 ```
