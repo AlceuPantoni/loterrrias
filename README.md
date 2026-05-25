@@ -61,13 +61,13 @@ loterrrias::resultado_todos(produto = 'megasena') |>
 
 | data_apuracao | concurso | houve_ganhador | valor_premio_maximo | numeros_sorteados | num_1 | num_2 | num_3 | num_4 | num_5 | num_6 |
 |:---|---:|---:|---:|:---|---:|---:|---:|---:|---:|---:|
+| 2026-05-24 | 3010 | 1 | 168170027 | 3;30;33;35;45;47 | 3 | 30 | 33 | 35 | 45 | 47 |
 | 2026-05-16 | 3009 | 0 | 0 | 4;6;8;18;21;30 | 4 | 6 | 8 | 18 | 21 | 30 |
 | 2026-05-14 | 3008 | 0 | 0 | 11;12;14;20;42;44 | 11 | 12 | 14 | 20 | 42 | 44 |
 | 2026-05-12 | 3007 | 0 | 0 | 17;19;27;32;38;44 | 17 | 19 | 27 | 32 | 38 | 44 |
 | 2026-05-09 | 3006 | 0 | 0 | 25;42;45;48;50;60 | 25 | 42 | 45 | 48 | 50 | 60 |
 | 2026-05-07 | 3005 | 0 | 0 | 17;23;29;30;48;50 | 17 | 23 | 29 | 30 | 48 | 50 |
 | 2026-05-05 | 3004 | 0 | 0 | 1;5;7;22;50;59 | 1 | 5 | 7 | 22 | 50 | 59 |
-| 2026-05-02 | 3003 | 0 | 0 | 8;24;27;37;47;55 | 8 | 24 | 27 | 37 | 47 | 55 |
 
 Neste outro caso de uso, temos um resumo histórico de todos os produtos
 das Loterias da Caixa disponíveis no pacote.
@@ -79,7 +79,7 @@ loterrrias::historico_resumido_produtos() |>
 
 | nome_produto | data_primeiro_concurso | quantidade_concursos | quantidade_concursos_com_ganhador | percentual_com_ganhador | media_premiacao | maior_premio | menor_premio | total_dezenas_sorteadas | numero_mais_sorteado | numero_menos_sorteado |
 |:---|:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| Mega-sena | 1996-03-11 | 3009 | 652 | 0.22 | 27435591.1 | 289420865 | 348732.75 | 18054 | 10 | 26 |
+| Mega-sena | 1996-03-11 | 3010 | 653 | 0.22 | 27651110.9 | 289420865 | 348732.75 | 18060 | 10 | 26 |
 | Lotofácil | 2003-09-29 | 3693 | 3241 | 0.88 | 1001670.9 | 8252873 | 10712.22 | 55395 | 20 | 16 |
 | Quina | 1994-03-13 | 7033 | 2638 | 0.38 | 3646533.5 | 579215957 | 14230.37 | 35165 | 4 | 47 |
 | Lotomania | 1999-10-02 | 2927 | 712 | 0.24 | 2612051.5 | 37261930 | 109348.66 | 58540 | 43 | 96 |
