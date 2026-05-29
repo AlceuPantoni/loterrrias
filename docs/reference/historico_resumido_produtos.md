@@ -49,11 +49,11 @@ historico_resumido_produtos() |>
 #> # A tibble: 7 × 3
 #>   nome_produto quantidade_concursos percentual_com_ganhador
 #>   <chr>                       <dbl>                   <dbl>
-#> 1 Mega-sena                    3011                    0.22
-#> 2 Lotofácil                    3696                    0.88
-#> 3 Quina                        7036                    0.37
+#> 1 Mega-sena                    3012                    0.22
+#> 2 Lotofácil                    3697                    0.88
+#> 3 Quina                        7037                    0.37
 #> 4 Lotomania                    2929                    0.24
-#> 5 Timemania                    2396                    0.03
+#> 5 Timemania                    2397                    0.03
 #> 6 Super Sete                    852                    0.04
-#> 7 Dia de Sorte                 1218                    0.3 
+#> 7 Dia de Sorte                 1219                    0.3 
 ```
