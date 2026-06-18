@@ -31,11 +31,11 @@ loterrrias::historico_resumido_produtos() |>
 | nome_produto | data_primeiro_concurso | quantidade_concursos | quantidade_concursos_com_ganhador | percentual_com_ganhador | media_premiacao | maior_premio | menor_premio | total_dezenas_sorteadas | numero_mais_sorteado | numero_menos_sorteado |
 |:---|:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | Mega-sena | 1996-03-11 | 3019 | 654 | 0.22 | 27655352.0 | 289420865 | 348732.75 | 18114 | 10 | 26 |
-| Lotofácil | 2003-09-29 | 3712 | 3253 | 0.88 | 1002101.5 | 8252873 | 10712.22 | 55680 | 20 | 16 |
+| Lotofácil | 2003-09-29 | 3713 | 3253 | 0.88 | 1002101.5 | 8252873 | 10712.22 | 55695 | 20 | 16 |
 | Quina | 1994-03-13 | 7050 | 2639 | 0.37 | 3652469.4 | 579215957 | 14230.37 | 35250 | 4 | 47 |
-| Lotomania | 1999-10-02 | 2937 | 716 | 0.24 | 2614506.2 | 37261930 | 109348.66 | 58740 | 43 | 96 |
+| Lotomania | 1999-10-02 | 2938 | 716 | 0.24 | 2614506.2 | 37261930 | 109348.66 | 58760 | 43 | 96 |
 | Timemania | 2008-03-01 | 2404 | 80 | 0.03 | 26191777.3 | 818652938 | 164711.44 | 16828 | 21 | 53 |
-| Super Sete | 2020-10-02 | 860 | 33 | 0.04 | 3300658.6 | 10146164 | 124747.77 | 6020 | 7 | 8 |
+| Super Sete | 2020-10-02 | 861 | 33 | 0.04 | 3300658.6 | 10146164 | 124747.77 | 6027 | 7 | 8 |
 | Dia de Sorte | 2018-05-19 | 1226 | 369 | 0.30 | 841829.8 | 4872572 | 59101.35 | 8582 | 10 | 1 |
 
 Para obter todos os resultados de um determinado produto:
