@@ -54,8 +54,6 @@ recentes.
 # resultado do concurso 1000 da Megasena
 resultado_concurso(produto = 'megasena', num_concurso = 1000) |>
    dplyr::select(concurso, numeros_sorteados, houve_ganhador)
-#> # A tibble: 1 × 3
-#>   concurso numeros_sorteados houve_ganhador
-#>      <dbl> <chr>                      <dbl>
-#> 1     1000 29;38;39;49;53;58              0
+#> Error in curl::curl_fetch_memory(url, handle = handle): Timeout was reached [servicebus2.caixa.gov.br]:
+#> Resolving timed out after 10000 milliseconds
 ```
