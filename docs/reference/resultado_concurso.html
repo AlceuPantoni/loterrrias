@@ -82,8 +82,10 @@ funções, reinstale o pacote para obter as bases mais recentes.</p>
 <span class="r-in"><span><span class="co"># resultado do concurso 1000 da Megasena</span></span></span>
 <span class="r-in"><span><span class="fu">resultado_concurso</span><span class="op">(</span>produto <span class="op">=</span> <span class="st">'megasena'</span>, num_concurso <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">concurso</span>, <span class="va">numeros_sorteados</span>, <span class="va">houve_ganhador</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in curl::curl_fetch_memory(url, handle = handle):</span> Timeout was reached [servicebus2.caixa.gov.br]:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> Resolving timed out after 10000 milliseconds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   concurso numeros_sorteados houve_ganhador</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     <span style="text-decoration: underline;">1</span>000 29;38;39;49;53;58              0</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
