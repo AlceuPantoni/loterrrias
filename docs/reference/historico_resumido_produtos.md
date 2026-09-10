@@ -51,9 +51,9 @@ historico_resumido_produtos() |>
 #>   <chr>                       <dbl>                   <dbl>
 #> 1 Mega-sena                    3055                    0.22
 #> 2 Lotofácil                    3779                    0.87
-#> 3 Quina                        7112                    0.37
-#> 4 Lotomania                    2972                    0.24
+#> 3 Quina                        7113                    0.37
+#> 4 Lotomania                    2973                    0.24
 #> 5 Timemania                    2439                    0.03
-#> 6 Super Sete                    895                    0.04
-#> 7 Dia de Sorte                 1292                    0.3 
+#> 6 Super Sete                    896                    0.04
+#> 7 Dia de Sorte                 1293                    0.3 
 ```
