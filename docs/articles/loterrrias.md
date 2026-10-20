@@ -31,12 +31,12 @@ loterrrias::historico_resumido_produtos() |>
 | nome_produto | data_primeiro_concurso | quantidade_concursos | quantidade_concursos_com_ganhador | percentual_com_ganhador | media_premiacao | maior_premio | menor_premio | total_dezenas_sorteadas | numero_mais_sorteado | numero_menos_sorteado |
 |:---|:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | Mega-sena | 1996-03-11 | 3071 | 661 | 0.22 | 27986558 | 289420865 | 348732.75 | 18426 | 10 | 26 |
-| Lotofácil | 2003-09-29 | 3807 | 3320 | 0.87 | 1018797 | 14264457 | 10712.22 | 57105 | 20 | 16 |
-| Quina | 1994-03-13 | 7145 | 2648 | 0.37 | 3687946 | 579215957 | 14230.37 | 35725 | 4 | 47 |
-| Lotomania | 1999-10-02 | 2988 | 721 | 0.24 | 2640687 | 37261930 | 109348.66 | 59760 | 43 | 96 |
+| Lotofácil | 2003-09-29 | 3808 | 3321 | 0.87 | 1018928 | 14264457 | 10712.22 | 57120 | 20 | 16 |
+| Quina | 1994-03-13 | 7146 | 2648 | 0.37 | 3687946 | 579215957 | 14230.37 | 35730 | 4 | 47 |
+| Lotomania | 1999-10-02 | 2989 | 722 | 0.24 | 2656230 | 37261930 | 109348.66 | 59780 | 43 | 96 |
 | Timemania | 2008-03-01 | 2456 | 80 | 0.03 | 26191777 | 818652938 | 164711.44 | 17192 | 21 | 53 |
 | Super Sete | 2020-10-02 | 910 | 33 | 0.04 | 3300659 | 10146164 | 124747.77 | 6370 | 5 | 8 |
-| Dia de Sorte | 2018-05-19 | 1325 | 388 | 0.29 | 846049 | 4872572 | 59101.35 | 9275 | 10 | 1 |
+| Dia de Sorte | 2018-05-19 | 1326 | 388 | 0.29 | 846049 | 4872572 | 59101.35 | 9282 | 10 | 1 |
 
 Para obter todos os resultados de um determinado produto:
 
@@ -118,4 +118,4 @@ dia_de_sorte |>
 
 | data_apuracao | concurso | houve_ganhador | valor_premio_maximo | numeros_sorteados | num_1 | num_2 | num_3 | num_4 | num_5 | num_6 | num_7 |
 |:---|---:|---:|---:|:---|---:|---:|---:|---:|---:|---:|---:|
-| 2026-10-18 | 1325 | 0 | 0 | 2;9;11;14;16;18;28 | 2 | 9 | 11 | 14 | 16 | 18 | 28 |
+| 2026-10-19 | 1326 | 0 | 0 | 1;2;6;11;19;21;23 | 1 | 2 | 6 | 11 | 19 | 21 | 23 |
