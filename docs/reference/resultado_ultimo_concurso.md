@@ -53,5 +53,5 @@ resultado_ultimo_concurso(produto = 'megasena') |>
 #> # A tibble: 1 × 3
 #>   concurso numeros_sorteados houve_ganhador
 #>      <dbl> <chr>                      <dbl>
-#> 1     3071 12;22;41;45;51;52              0
+#> 1     3072 2;6;9;16;31;40                 0
 ```
